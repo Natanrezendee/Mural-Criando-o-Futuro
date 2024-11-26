@@ -1,0 +1,29 @@
+
+.news-content {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-left: 2px solid #00528C;
+}
+
+.sidebar h4 {
+    color: #00528C;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.sidebar a {
+    color: #00528C;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+    color: #FFD700;
+}

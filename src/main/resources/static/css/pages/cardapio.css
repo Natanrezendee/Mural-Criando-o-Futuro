@@ -1,0 +1,19 @@
+.cardapio-header {
+    text-align: center;
+    margin: 20px 0;
+}
+.cardapio-header h1 {
+    color: #00528C;
+    font-size: 28px;
+}
+.cardapio-imagem {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.cardapio-imagem img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

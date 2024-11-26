@@ -1,0 +1,24 @@
+.hero-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.news-title {
+    color: #00528C;
+    font-weight: 600;
+}
+
+.news-button {
+    background-color: #00528C;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.news-button:hover {
+    background-color: #FFD700;
+    color: #000;
+}
