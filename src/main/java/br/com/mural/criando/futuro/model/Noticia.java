@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Getter
@@ -17,6 +19,10 @@ public class Noticia {
     private String titulo;
     private String texto;
     private String autor;
+
+    // Campo para armazenar a data de publicação
+    private LocalDate dataPublicacao;
+
     @Transient
     private String textoAbreviado;
 
@@ -33,5 +39,20 @@ public class Noticia {
             return texto.substring(0, 100) + "...";
         }
         return texto;
+    }
+
+    public String getDataPublicacaoFormatada() {
+        if (dataPublicacao != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            return dataPublicacao.format(formatter);
+        }
+        return "";
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (dataPublicacao == null) {
+            dataPublicacao = LocalDate.now();
+        }
     }
 }
