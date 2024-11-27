@@ -22,9 +22,7 @@ public class ImgurService {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
 
-        // Prepare o arquivo para envio
-        HttpHeaders fileHeaders = new HttpHeaders();
-        fileHeaders.setContentType(MediaType.MULTIPART_FORM_DATA);
+        // Prepare o arquivo para envio\
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("image", file.getBytes());
 

@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.Objects;
+
 
 @Controller
 public class PageController {
@@ -17,15 +19,14 @@ public class PageController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String index(Model model) {
         model.addAttribute("noticias", noticiaService.getAllNoticias());
-        return "inicio";
+        return "index";
     }
 
-    // Página de Notícia - Exibe a notícia completa
     @GetMapping("/noticia/{id}")
-    public String noticia(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("noticia", noticiaService.getNoticiaById(id).orElse(null));
+    public String noticia(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("noticia", Objects.requireNonNull(noticiaService.getNoticiaById(id).orElse(null)));
         return "noticia";
     }
 
