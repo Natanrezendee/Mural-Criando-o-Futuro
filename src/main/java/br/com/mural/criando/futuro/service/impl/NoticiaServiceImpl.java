@@ -29,4 +29,9 @@ public class NoticiaServiceImpl implements NoticiaService {
     public void saveNoticia(Noticia noticia) {
         noticiaRepository.save(noticia);
     }
+
+    @Override
+    public void deleteNoticia(Long id) {
+        noticiaRepository.deleteById(id);
+    }
 }

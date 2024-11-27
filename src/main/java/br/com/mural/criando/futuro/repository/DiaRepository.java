@@ -1,6 +1,6 @@
 package br.com.mural.criando.futuro.repository;
 
-import br.com.mural.criando.futuro.model.Dia;
+import br.com.mural.criando.futuro.model.cardapio.Dia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

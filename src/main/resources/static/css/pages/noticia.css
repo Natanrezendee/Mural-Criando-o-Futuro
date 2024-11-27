@@ -27,3 +27,19 @@
 .sidebar a:hover {
     color: #FFD700;
 }
+
+#carouselNewsImages .carousel-control-prev,
+#carouselNewsImages .carousel-control-next {
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #000;
+    filter: brightness(0);
+}
+
+#carouselNewsImages .carousel-item img {
+    max-height: 400px;
+    width: auto;
+    object-fit: contain;
+    margin: auto;
+}

@@ -1,4 +1,4 @@
-package br.com.mural.criando.futuro.model;
+package br.com.mural.criando.futuro.model.cardapio;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -9,4 +9,5 @@ public interface NoticiaService {
     List<Noticia> getAllNoticias();
     Optional<Noticia> getNoticiaById(Long id);
     void saveNoticia(Noticia noticia);
+    void deleteNoticia(Long id);
 }

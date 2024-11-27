@@ -1,6 +1,6 @@
 package br.com.mural.criando.futuro.repository;
 
-import br.com.mural.criando.futuro.model.Semana;
+import br.com.mural.criando.futuro.model.cardapio.Semana;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

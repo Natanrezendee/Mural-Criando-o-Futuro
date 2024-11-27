@@ -1,6 +1,12 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
+    flex-direction: column;
 }
 
 .navbar {
@@ -16,6 +22,10 @@ body {
     color: #FFD700;
 }
 
+.container {
+    flex-grow: 1;
+}
+
 .navbar-icons a {
     color: #fff;
     font-size: 1.5rem;
@@ -29,6 +39,7 @@ body {
     background-color: #00528C;
     color: white;
     padding: 20px 0;
+    margin-top: auto;
 }
 
 .footer a {

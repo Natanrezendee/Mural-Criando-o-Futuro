@@ -3,6 +3,8 @@ package br.com.mural.criando.futuro.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -32,6 +34,7 @@ public class Noticia {
             joinColumns = @JoinColumn(name = "noticia_id")
     )
     @Column(name = "url_imagem")
+    @Cascade(CascadeType.REMOVE)
     private List<String> imagens;
 
     public String getTextoAbreviado() {
