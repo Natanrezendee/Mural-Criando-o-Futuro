@@ -1,16 +1,18 @@
 html, body {
     height: 100%;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F7F7F7;
     flex-direction: column;
 }
 
 .navbar {
-    background-color: #00528C;
+    background-color: #2eb0e8; /* Azul claro */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para a navbar */
 }
 
 .navbar-brand, .navbar-nav .nav-link {
@@ -20,10 +22,7 @@ body {
 
 .navbar-brand:hover, .navbar-nav .nav-link:hover {
     color: #FFD700;
-}
-
-.container {
-    flex-grow: 1;
+    transition: color 0.3s ease-in-out;
 }
 
 .navbar-icons a {
@@ -35,8 +34,13 @@ body {
     color: #FFD700;
 }
 
+.container {
+    flex-grow: 1;
+}
+
+/* Estilo para o Footer */
 .footer {
-    background-color: #00528C;
+    background-color: #2eb0e8; /* Azul claro */
     color: white;
     padding: 20px 0;
     margin-top: auto;

@@ -26,3 +26,15 @@
     background-color: #FFD700;
     color: #00528C;
 }
+
+.form-floating > select {
+    padding-top: 1.6rem;
+    padding-bottom: 0.4rem;
+}
+.form-floating > select:focus ~ label,
+.form-floating > select:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem);
+    font-size: 0.875rem;
+    color: #00528C;
+}
+
