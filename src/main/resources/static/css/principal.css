@@ -11,6 +11,8 @@ body {
 }
 
 .navbar {
+    display: flex;
+    align-items: center;
     background-color: #2eb0e8; /* Azul claro */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para a navbar */
 }

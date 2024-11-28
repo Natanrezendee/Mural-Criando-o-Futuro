@@ -14,7 +14,9 @@
     <div th:replace="~{componentes/navbar}"></div>
 
     <div class="container my-4">
-        <img src="/imagens/creche.png" alt="Imagem da Creche" class="hero-image">
+        <a href="https://www.google.com/maps/place/Creche+Municipal+Criando+o+Futuro/@-22.9113873,-43.5901653,15z/data=!4m16!1m9!3m8!1s0x9be4656541645b:0x90f80fa08e7df8ca!2sAv.+Ces%C3%A1rio+de+Melo,+6006+-+Campo+Grande,+Rio+de+Janeiro+-+RJ,+23059-001!3b1!8m2!3d-22.9111327!4d-43.5900774!10e5!16s%2Fg%2F11h0zhg5xm!3m5!1s0x9be4657041e547:0xeef0c7f0171b5eb4!8m2!3d-22.9111213!4d-43.5902953!16s%2Fg%2F1tfb7srq?entry=ttu&g_ep=EgoyMDI0MTEyNC4xIKXMDSoASAFQAw%3D%3D" target="_blank">
+            <img src="/imagens/creche.png" alt="Imagem da Creche" class="hero-image">
+        </a>
     </div>
 
     <div class="container my-5">
@@ -36,7 +38,7 @@
         <div th:if="${paginaAtual > 0}">
             <a th:href="@{'/?page=' + ${paginaAtual - 1} + '&size=2'}" class="btn btn-primary ms-2">Voltar</a>
         </div>
-        <div th:if="${paginaAtual <= totalPaginas - 1}">
+        <div th:if="${paginaAtual < totalPaginas - 2}">
             <a th:href="@{'/?page=' + ${paginaAtual + 1} + '&size=2'}" class="btn btn-primary ms-2">Avançar</a>
         </div>
     </div>
