@@ -12,7 +12,7 @@ import java.util.List;
 public interface NoticiaRepository extends JpaRepository<Noticia, Long> {
     @Query("SELECT new br.com.mural.criando.futuro.model.noticia.NoticiaAbreviada(" +
             "n.id, n.titulo, " +
-            "CASE WHEN LENGTH(n.texto) > 100 THEN CONCAT(SUBSTRING(n.texto, 1, 100), '...') ELSE n.texto END) " +
+            "CASE WHEN LENGTH(n.texto) > 100 THEN CONCAT(SUBSTRING(n.texto, 1, 150), '...') ELSE n.texto END) " +
             "FROM Noticia n")
     Page<NoticiaAbreviada> findAllNoticiasAbreviadas(Pageable pageable);
     @Query("SELECT n.imagens FROM Noticia n WHERE n.id = :id")
