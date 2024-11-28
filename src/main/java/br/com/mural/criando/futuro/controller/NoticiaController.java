@@ -1,6 +1,6 @@
 package br.com.mural.criando.futuro.controller;
 
-import br.com.mural.criando.futuro.model.Noticia;
+import br.com.mural.criando.futuro.model.noticia.Noticia;
 import br.com.mural.criando.futuro.service.NoticiaService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,4 +1,4 @@
-package br.com.mural.criando.futuro.model;
+package br.com.mural.criando.futuro.model.noticia;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -19,15 +19,10 @@ public class Noticia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
+    @Column(name = "texto", columnDefinition = "TEXT")
     private String texto;
     private String autor;
-
-    // Campo para armazenar a data de publicação
     private LocalDate dataPublicacao;
-
-    @Transient
-    private String textoAbreviado;
-
     @ElementCollection
     @CollectionTable(
             name = "noticia_imagens",
@@ -36,13 +31,6 @@ public class Noticia {
     @Column(name = "url_imagem")
     @Cascade(CascadeType.REMOVE)
     private List<String> imagens;
-
-    public String getTextoAbreviado() {
-        if (texto != null && texto.length() > 100) {
-            return texto.substring(0, 100) + "...";
-        }
-        return texto;
-    }
 
     public String getDataPublicacaoFormatada() {
         if (dataPublicacao != null) {

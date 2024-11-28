@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/principal.css">
-    <link rel="stylesheet" href="/css/pages/inicio.css">
+    <link rel="stylesheet" href="/css/pages/index.css">
 </head>
 <body>
     <div th:replace="~{componentes/navbar}"></div>
@@ -21,13 +21,23 @@
         <h2 class="news-title">Últimas Notícias</h2>
         <div class="row mt-4" th:each="noticia : ${noticias}">
             <div class="col-md-4">
-                <img th:src="@{${noticia.imagens.get(0)}}" class="img-fluid rounded" alt="Imagem da Notícia">
+                <img th:src="@{${noticia.imagem}}" class="img-fluid rounded" alt="Imagem da Notícia">
             </div>
             <div class="col-md-8">
                 <h3 class="mt-2" th:text="${noticia.titulo}"></h3>
                 <p th:text="${noticia.textoAbreviado}"></p>
                 <a th:href="@{/noticia/{id}(id=${noticia.id})}" class="news-button">Continue lendo</a>
             </div>
+        </div>
+    </div>
+
+    <!-- Navegação de Página -->
+    <div class="d-flex justify-content-center mt-4">
+        <div th:if="${paginaAtual > 0}">
+            <a th:href="@{'/?page=' + ${paginaAtual - 1} + '&size=2'}" class="btn btn-primary ms-2">Voltar</a>
+        </div>
+        <div th:if="${paginaAtual <= totalPaginas - 1}">
+            <a th:href="@{'/?page=' + ${paginaAtual + 1} + '&size=2'}" class="btn btn-primary ms-2">Avançar</a>
         </div>
     </div>
 
