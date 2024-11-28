@@ -38,7 +38,7 @@
         <div th:if="${paginaAtual > 0}">
             <a th:href="@{'/?page=' + ${paginaAtual - 1} + '&size=2'}" class="btn btn-primary ms-2">Voltar</a>
         </div>
-        <div th:if="${paginaAtual < totalPaginas - 2}">
+        <div th:if="${paginaAtual < totalPaginas - 1}">
             <a th:href="@{'/?page=' + ${paginaAtual + 1} + '&size=2'}" class="btn btn-primary ms-2">Avançar</a>
         </div>
     </div>
