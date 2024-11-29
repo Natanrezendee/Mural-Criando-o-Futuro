@@ -46,10 +46,11 @@
             <div class="col-md-4">
                 <div class="sidebar">
                     <h4>Últimas Postagens</h4>
-                    <a href="#">Atividades Recentes</a>
-                    <a href="#">Cardápio Semanal</a>
-                    <a href="#">Comunicados Importantes</a>
-                    <a href="#">Galeria de Fotos</a>
+                    <div th:each="postagem : ${ultimasPostagens}">
+                        <a th:href="@{/noticia/{id}(id=${postagem.id})}"
+                           th:text="${postagem.titulo}">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

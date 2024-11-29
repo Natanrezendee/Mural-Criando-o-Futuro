@@ -2,12 +2,14 @@ package br.com.mural.criando.futuro.service;
 
 import br.com.mural.criando.futuro.model.noticia.Noticia;
 import br.com.mural.criando.futuro.model.noticia.NoticiaAbreviada;
+import br.com.mural.criando.futuro.model.noticia.NoticiaTitulo;
 import br.com.mural.criando.futuro.repository.NoticiaRepository;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,6 +35,9 @@ public class NoticiaService {
         return noticiaRepository.findAll();
     }
 
+    public Optional<Noticia> getNoticiaById(Long id) {
+        return noticiaRepository.findById(id);
+    }
 
     public void saveNoticia(Noticia noticia) {
         noticiaRepository.save(noticia);
@@ -57,8 +62,9 @@ public class NoticiaService {
         return noticiasAbreviadas;
     }
 
-    public Optional<Noticia> getNoticiaById(Long id) {
-        return noticiaRepository.findById(id);
+    public List<NoticiaTitulo> getUltimasPostagens(int limite) {
+        Pageable pageable = PageRequest.of(0, limite, Sort.by(Sort.Order.desc("dataPublicacao")));
+        return noticiaRepository.findAllByOrderByDataPublicacaoDesc(pageable);
     }
 
     private void carregarImagensParaNoticias(List<NoticiaAbreviada> noticiasAbreviadas) {

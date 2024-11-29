@@ -18,7 +18,7 @@ public class PageService {
         this.noticiaService = noticiaService;
     }
 
-    public String getNoticiasAbreviadasPage(int pagina, int tamanho, Model model) {
+    public String carregarDadosIndex(int pagina, int tamanho, Model model) {
         Page<NoticiaAbreviada> noticiasAbreviadas = noticiaService.getNoticiasAbreviadasPage(pagina, tamanho);
         model.addAttribute("noticias", noticiasAbreviadas.getContent());
         model.addAttribute("paginaAtual", pagina);
@@ -27,9 +27,10 @@ public class PageService {
     }
 
 
-    public String getNoticiaById(Long id, Model model) {
+    public String carregarDadosNoticia(Long id, Model model) {
         Optional<Noticia> noticia = noticiaService.getNoticiaById(id);
         noticia.ifPresent(value -> model.addAttribute("noticia", value));
+        model.addAttribute("ultimasPostagens", noticiaService.getUltimasPostagens(4));
         return "noticia";
     }
 

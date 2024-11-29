@@ -21,12 +21,12 @@ public class PageController {
     public String index(@RequestParam(value = "page", defaultValue = "0") int page,
                         @RequestParam(value = "size", defaultValue = "2") int size,
                         Model model) {
-        return pageService.getNoticiasAbreviadasPage(page, size,  model);
+        return pageService.carregarDadosIndex(page, size,  model);
     }
 
     @GetMapping("/noticia/{id}")
     public String noticia(@PathVariable(value = "id") Long id, Model model) {
-        return pageService.getNoticiaById(id, model);
+        return pageService.carregarDadosNoticia(id, model);
     }
 
     @GetMapping("/informacoes")
