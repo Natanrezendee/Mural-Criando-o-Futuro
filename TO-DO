@@ -1,0 +1,21 @@
+ideias de estilização:
+  editar cores navbar e footer para cores mais pasteis ou azuls com tonalidades diferentes
+  deixar uma cor default no body com um azul mais claro que a navbar
+  modificar a imagem de fundo para as abas diferentes do index para a imagem da creche com um tom de transparencia alto
+
+ajeitar formulario de postagem:
+  criar controller
+  ajeitar o form
+  estilizar o site
+  
+
+começar a editar o cardapio:
+  criar endpoint
+  ajeitar base de dados
+  ajeitar view no front
+
+ajeitar validação de login para buscar usuario na base de dados:
+  remover chamada estática de user=teste / senha=teste
+  criar funcionalidade na base de dados
+
+criar pagina para cadastrar um novo usuario ao fazer login
