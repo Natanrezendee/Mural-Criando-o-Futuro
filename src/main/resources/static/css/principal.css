@@ -1,55 +1,93 @@
+/* Geral */
 html, body {
     height: 100%;
     margin: 0;
-}
-
-body {
     background-color: #F7F7F7;
-    flex-direction: column;
 }
 
+/* Navbar */
 .navbar {
-    display: flex;
-    align-items: center;
-    background-color: #19779f;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para a navbar */
-    height: 80px; /* Ajuste a altura aqui */
-    position: relative; /* Posição normal para navbar */
-    z-index: 10; /* Coloca o menu acima da imagem */
-    padding: 15px 0; /* Defina o tamanho da navbar */
+    background-color: #19779f; /* Cor do fundo da navbar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 10px 0;
 }
 
-
-.navbar-brand, .navbar-nav .nav-link {
-    color: #fff;
-    font-weight: 500;
-    font-size: 1.4rem;
+.navbar-brand {
+    color: #fff !important; /* Cor do texto da marca */
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
-.navbar-brand:hover, .navbar-nav .nav-link:hover {
-    color: #FFD700;
+.navbar-brand:hover {
+    color: #FFD700 !important; /* Cor ao passar o mouse */
     transition: color 0.3s ease-in-out;
 }
 
+.nav-link {
+    color: #fff !important; /* Cor dos links no menu */
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.nav-link:hover {
+    color: #FFD700 !important; /* Cor dos links ao passar o mouse */
+}
+
+/* Ícones da navbar */
+.navbar-icons {
+    display: flex; /* Alinha os ícones em linha */
+    align-items: center;
+    margin-left: auto;
+}
+
 .navbar-icons a {
-    color: #fff;
-    font-size: 2rem;
+    color: #fff; /* Cor dos ícones */
+    text-decoration: none; /* Remove o sublinhado */
+    margin-left: 1rem; /* Espaçamento entre os ícones */
 }
 
 .navbar-icons a:hover {
-    color: #FFD700;
+    color: #FFD700; /* Cor ao passar o mouse */
 }
 
-.container {
-    flex-grow: 1;
+.navbar-icons i {
+    font-size: 1.8rem; /* Tamanho dos ícones */
 }
 
-/* Estilo para o Footer */
+/* Estilo Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        position: fixed; /* Fixa no topo */
+        top: 0;
+        width: 100%;
+        z-index: 10; /* Garante que fique acima de outros elementos */
+    }
+
+    .navbar-collapse {
+        background-color: #19779f; /* Cor de fundo para o menu no mobile */
+    }
+
+    .navbar-nav {
+        margin-top: 1rem; /* Espaçamento entre os itens no mobile */
+        text-align: center; /* Centraliza os links */
+    }
+
+    .navbar-icons {
+        justify-content: center; /* Centraliza os ícones no mobile */
+        margin-top: 1rem; /* Espaço entre os ícones e o menu */
+    }
+
+    .navbar-icons i {
+        font-size: 1.5rem; /* Reduz o tamanho dos ícones no mobile */
+    }
+}
+
+/* Footer */
 .footer {
-    background-color: #19779f;
-    color: white;
+    background-color: #19779f; /* Fundo do footer */
+    color: #fff;
     padding: 20px 0;
-    margin-top: auto;
+    text-align: center;
 }
 
 .footer a {
@@ -59,50 +97,4 @@ body {
 
 .footer a:hover {
     text-decoration: underline;
-}
-
-
-/* Navbar no modo mobile */
-@media (max-width: 768px) {
-    .navbar {
-        position: fixed; /* Fixa a navbar no topo em dispositivos móveis */
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 20; /* Garante que o menu fique acima de outros elementos */
-        padding: 10px 0;
-    }
-
-    /* O fundo da barra de navegação para o menu */
-    .navbar-collapse {
-        width: 100%;
-        background-color: #19779f;
-    }
-
-    /* Para o ícone da hamburguer do menu */
-    .navbar-toggler-icon {
-        background-color: transparent; /* Torna o fundo transparente */
-        width: 30px; /* Largura da barra */
-        height: 3px; /* Altura das barrinhas */
-        position: relative;
-    }
-
-    .navbar-toggler-icon::before,
-    .navbar-toggler-icon::after {
-        content: "";
-        display: block;
-        position: absolute;
-        background-color: white; /* Cor das barrinhas */
-        width: 30px;
-        height: 3px;
-        left: 0;
-    }
-
-    .navbar-toggler-icon::before {
-        top: -8px; /* Distância da barrinha superior */
-    }
-
-    .navbar-toggler-icon::after {
-        top: 8px; /* Distância da barrinha inferior */
-    }
 }

@@ -122,3 +122,9 @@
 .content {
     padding-top: 20px;
 }
+
+@media (max-width: 768px) {
+    .hero-image {
+        object-position: 20% center; /* Alinha a imagem completamente à esquerda */
+    }
+}
