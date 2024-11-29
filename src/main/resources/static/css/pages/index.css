@@ -1,19 +1,34 @@
 /* Estilo para a imagem hero (capa) */
 .hero-image {
     width: 100%;
-    max-width: 1200px;
-    height: 450px;
-    object-position: center;
+    height: 100vh;
     object-fit: cover;
-    border-radius: 12px;
-    margin: 30px auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    object-position: center;
+    margin: 0;
+    position: relative; /* Isso vai fazer a imagem ficar "fixa" no fundo */
+    top: 0;
+    left: 0;
 }
 
-.hero-image:hover {
-    transform: scale(1.05);
+
+
+/* Seta para baixo */
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: white;
+    animation: bounce 1s infinite;
+    cursor: pointer;
 }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
 
 /* Título das notícias */
 .news-title {
@@ -26,7 +41,7 @@
 
 /* Botões */
 .news-button {
-    background-color: #00528C;
+    background-color: #19779f;
     color: #fff;
     border: none;
     padding: 8px 20px;
@@ -91,7 +106,7 @@
 .pagination a {
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: #5BC0EB;
+    background-color: #19779f;
     color: #fff;
     text-decoration: none;
     margin: 0 5px;
@@ -102,4 +117,8 @@
 .pagination a:hover {
     background-color: #FFD700;
     color: #000;
+}
+
+.content {
+    padding-top: 20px;
 }
