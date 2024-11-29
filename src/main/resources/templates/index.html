@@ -21,15 +21,15 @@
     </div>
 
     <div class="container my-5">
-        <h2 class="news-title">Últimas Notícias</h2>
-        <div class="row mt-4" th:each="noticia : ${noticias}">
+        <h2 class="news-title">Últimas Postagens</h2>
+        <div class="row mt-4" th:each="postagem : ${postagens}">
             <div class="col-md-4">
-                <img th:src="@{${noticia.imagem}}" class="img-fluid rounded" alt="Imagem da Notícia">
+                <img th:src="@{${postagem.imagem}}" class="img-fluid rounded" alt="Imagem da Notícia">
             </div>
             <div class="col-md-8">
-                <h3 class="mt-2" th:text="${noticia.titulo}"></h3>
-                <p th:text="${noticia.textoAbreviado}"></p>
-                <a th:href="@{/noticia/{id}(id=${noticia.id})}" class="news-button">Continue lendo</a>
+                <h3 class="mt-2" th:text="${postagem.titulo}"></h3>
+                <p th:text="${postagem.textoAbreviado}"></p>
+                <a th:href="@{/postagem/{id}(id=${postagem.id})}" class="news-button">Continue lendo</a>
             </div>
         </div>
     </div>

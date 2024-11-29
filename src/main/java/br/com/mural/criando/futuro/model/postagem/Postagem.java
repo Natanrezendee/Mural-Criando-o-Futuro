@@ -1,4 +1,4 @@
-package br.com.mural.criando.futuro.model.noticia;
+package br.com.mural.criando.futuro.model.postagem;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Noticia {
+public class Postagem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +25,8 @@ public class Noticia {
     private LocalDate dataPublicacao;
     @ElementCollection
     @CollectionTable(
-            name = "noticia_imagens",
-            joinColumns = @JoinColumn(name = "noticia_id")
+            name = "postagem_imagens",
+            joinColumns = @JoinColumn(name = "postagem_id")
     )
     @Column(name = "url_imagem")
     @Cascade(CascadeType.REMOVE)
