@@ -1,0 +1,110 @@
+/* Main content */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+}
+
+/* Contact form */
+.contact-form {
+    max-width: 800px;
+    width: 100%;
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efeito de hover no formulário */
+.contact-form:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Título do formulário */
+.contact-form h2 {
+    color: #00528C;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+/* Estilo dos campos de formulário */
+.form-control {
+    margin-bottom: 1.5rem;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    border: 1px solid #d1d1d1;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Efeito ao focar nos campos */
+.form-control:focus {
+    border-color: #00528C;
+    box-shadow: 0 0 0.3rem rgba(0, 82, 140, 0.3);
+    background-color: #fff;
+}
+
+/* Labels dos campos */
+.form-floating label {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Botão de envio */
+.btn-primary {
+    background-color: #00528C;
+    border: none;
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    width: 100%;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efeito de hover no botão */
+.btn-primary:hover {
+    background-color: #FFD700;
+    color: #00528C;
+    transform: translateY(-3px);
+}
+
+/* Efeito de foco no botão */
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0.3rem rgba(0, 82, 140, 0.3);
+}
+
+/* Estilo dos campos de seleção */
+.form-floating > select {
+    padding-top: 1.6rem;
+    padding-bottom: 0.4rem;
+    border-radius: 8px;
+}
+
+/* Labels dos campos de seleção */
+.form-floating > select:focus ~ label,
+.form-floating > select:not(:placeholder-shown) ~ label {
+    transform: translateY(-1.5rem);
+    font-size: 1rem;
+    color: #00528C;
+}
+
+/* Mensagem de sucesso */
+#mensagem-sucesso {
+    font-size: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: center;
+    display: none;
+}

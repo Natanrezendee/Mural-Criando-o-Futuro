@@ -31,11 +31,11 @@ public class PageController {
 
     @GetMapping("/informacoes")
     public String informacoes() {
-        return "informacoes";
+        return "principais/informacoes";
     }
 
     @GetMapping("/contato")
     public String contato() {
-        return "contato";
+        return "principais/contato";
     }
 }

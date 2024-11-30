@@ -8,41 +8,43 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/principal.css">
-    <link rel="stylesheet" href="/css/pages/contato.css">
+    <link rel="stylesheet" href="/css/pages/formulario.css">
 </head>
 <body>
 
 <div th:replace="~{componentes/navbar}"></div>
 
-<div class="contact-form">
-    <h2>Contato</h2>
-    <form id="form-contato" onsubmit="enviarFormulario(event)" aria-labelledby="form-contato">
-        <div class="form-floating">
-            <input type="text" class="form-control" id="nome" placeholder="Nome" required aria-label="Nome">
-            <label for="nome">Nome</label>
+    <div class="main-content">
+        <div class="contact-form">
+            <h2>Entre em contato conosco!</h2>
+            <form id="form-contato" onsubmit="enviarFormulario(event)" aria-labelledby="form-contato">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" required aria-label="Nome">
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="form-floating" id="campo-email">
+                    <input type="email" class="form-control" id="email" placeholder="E-mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$" aria-label="E-mail">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="form-floating" id="campo-telefone">
+                    <input type="tel" class="form-control" id="telefone" placeholder="Telefone" pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-label="Telefone">
+                    <label for="telefone">Telefone: (99) 99999-9999</label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="assunto" placeholder="Assunto" required aria-label="Assunto">
+                    <label for="assunto">Assunto</label>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" id="mensagem" placeholder="Digite sua mensagem" style="height: 150px;" required aria-label="Mensagem"></textarea>
+                    <label for="mensagem">Digite sua mensagem</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+            </form>
+            <div id="mensagem-sucesso" class="alert alert-success mt-3" style="display: none;">
+                Mensagem enviada com sucesso!
+            </div>
         </div>
-        <div class="form-floating" id="campo-email">
-            <input type="email" class="form-control" id="email" placeholder="E-mail" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$" aria-label="E-mail">
-            <label for="email">E-mail</label>
-        </div>
-        <div class="form-floating" id="campo-telefone">
-            <input type="tel" class="form-control" id="telefone" placeholder="Telefone" pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-label="Telefone">
-            <label for="telefone">Telefone: (99) 99999-9999</label>
-        </div>
-        <div class="form-floating">
-            <input type="text" class="form-control" id="assunto" placeholder="Assunto" required aria-label="Assunto">
-            <label for="assunto">Assunto</label>
-        </div>
-        <div class="form-floating">
-            <textarea class="form-control" id="mensagem" placeholder="Digite sua mensagem" style="height: 150px;" required aria-label="Mensagem"></textarea>
-            <label for="mensagem">Digite sua mensagem</label>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Enviar</button>
-    </form>
-    <div id="mensagem-sucesso" class="alert alert-success mt-3" style="display: none;">
-        Mensagem enviada com sucesso!
     </div>
-</div>
 
 <div th:replace="~{componentes/footer}"></div>
 

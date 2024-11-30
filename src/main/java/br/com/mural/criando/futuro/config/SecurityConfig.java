@@ -38,13 +38,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/css/**", "/js/**").permitAll()
-                                .requestMatchers("/dashboard").authenticated()
+                                .requestMatchers("/criarPostagem").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login")
-                                .defaultSuccessUrl("/dashboard", true)
+                                .defaultSuccessUrl("/criarPostagem", true)
                                 .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll

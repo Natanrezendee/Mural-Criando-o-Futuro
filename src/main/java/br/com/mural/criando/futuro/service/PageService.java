@@ -23,7 +23,7 @@ public class PageService {
         model.addAttribute("postagens", postagensAbreviadas.getContent());
         model.addAttribute("paginaAtual", pagina);
         model.addAttribute("totalPaginas", postagensAbreviadas.getSize());
-        return "index";
+        return "principais/index";
     }
 
 
@@ -31,7 +31,7 @@ public class PageService {
         Optional<Postagem> postagem = postagemService.getPostagemById(id);
         postagem.ifPresent(value -> model.addAttribute("postagem", value));
         model.addAttribute("ultimasPostagens", postagemService.getUltimasPostagens(4));
-        return "postagem";
+        return "principais/postagem";
     }
 
 }
