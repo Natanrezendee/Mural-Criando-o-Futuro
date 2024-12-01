@@ -9,22 +9,95 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/principal.css">
-    <link rel="stylesheet" href="/css/pages/formulario.css">
+    <link rel="stylesheet" href="/css/postagem.css">
 </head>
 <body>
     <div th:replace="~{componentes/navbar}"></div>
 
     <div class="main-content">
-    <h2>Bem-vindo ao Dashboard</h2>
-    <p>Aqui você pode postar novas notícias.</p>
-        <form action="/postar-postagem" method="POST">
-            <label>
-                <textarea name="postagem" placeholder="Escreva sua notícia..." required></textarea>
-            </label>
-            <br>
-            <button type="submit">Postar Notícia</button>
+        <h2>Bem-vindo ao Dashboard</h2>
+        <p>Aqui você pode postar novas notícias.</p>
+
+        <form action="/postar-postagem" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Digite o título da notícia" required />
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor:</label>
+                <input type="text" id="autor" name="autor" placeholder="Digite o autor da notícia" required />
+            </div>
+            <div class="form-group">
+                <label for="postagem">Conteúdo da Notícia:</label>
+                <textarea id="postagem" name="postagem" placeholder="Escreva sua notícia..." required></textarea>
+            </div>
+
+            <div class="form-group drag-drop">
+                <label for="imagens">Arraste e solte imagens ou clique para selecionar:</label>
+                <input type="file" id="imagens" name="imagens" accept="image/*" multiple />
+                <div class="drag-drop-area" id="drag-drop-area">
+                    <span>Arraste suas imagens aqui</span>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar Postagem</button>
         </form>
     </div>
     <div th:replace="~{componentes/footer}"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Seleciona a área de drag-drop e o input de arquivo
+        const dragDropArea = document.getElementById('drag-drop-area');
+        const fileInput = document.getElementById('imagens');
+        const previewContainer = document.querySelector('.preview-container');
+
+        // Função para mostrar as imagens selecionadas
+        function showPreview(files) {
+            previewContainer.innerHTML = ''; // Limpa as imagens anteriores
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    previewContainer.appendChild(img);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Evento para alterar a área de arraste quando o arquivo é arrastado sobre a área
+        dragDropArea.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            dragDropArea.classList.add('drag-over'); // Adiciona efeito visual de hover
+        });
+
+        // Evento para quando o arquivo é soltado
+        dragDropArea.addEventListener('dragleave', function () {
+            dragDropArea.classList.remove('drag-over'); // Remove o efeito de hover
+        });
+
+        // Evento de soltura do arquivo
+        dragDropArea.addEventListener('drop', function (e) {
+            e.preventDefault();
+            dragDropArea.classList.remove('drag-over');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                showPreview(files);
+            }
+        });
+
+        // Evento para abrir o seletor de arquivos quando a área de arraste for clicada
+        dragDropArea.addEventListener('click', function () {
+            fileInput.click(); // Aciona o seletor de arquivos
+        });
+
+        // Quando os arquivos são selecionados diretamente
+        fileInput.addEventListener('change', function () {
+            showPreview(fileInput.files); // Exibe as imagens selecionadas
+        });
+    </script>
+
 </body>
 </html>

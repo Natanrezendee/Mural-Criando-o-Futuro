@@ -2,6 +2,7 @@ package br.com.mural.criando.futuro.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
@@ -38,6 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/css/**", "/js/**").permitAll()
+                                .requestMatchers(HttpMethod.POST).permitAll()
                                 .requestMatchers("/criarPostagem").authenticated()
                                 .anyRequest().permitAll()
                 )
@@ -45,10 +47,10 @@ public class SecurityConfig {
                         formLogin
                                 .loginPage("/login")
                                 .defaultSuccessUrl("/criarPostagem", true)
+                                .defaultSuccessUrl("/postar-postagem")
                                 .permitAll()
                 )
-                .logout(LogoutConfigurer::permitAll
-                );
+                .logout(LogoutConfigurer::permitAll);
 
         return http.build();
     }

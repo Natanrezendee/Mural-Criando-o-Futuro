@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
@@ -37,5 +39,13 @@ public class PageController {
     @GetMapping("/contato")
     public String contato() {
         return "principais/contato";
+    }
+
+    @PostMapping("/postar-postagem")
+    public String postarNoticia(@RequestParam("titulo") String titulo,
+                                @RequestParam("autor") String autor,
+                                @RequestParam("postagem") String texto,
+                                @RequestParam(value = "imagens", required = false) MultipartFile[] imagens) {
+        return pageService.postarNoticia(titulo, autor, texto, imagens);
     }
 }

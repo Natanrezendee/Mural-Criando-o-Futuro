@@ -2,6 +2,7 @@ package br.com.mural.criando.futuro.model.postagem;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -13,6 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class Postagem {
 
     @Id
@@ -31,6 +33,12 @@ public class Postagem {
     @Column(name = "url_imagem")
     @Cascade(CascadeType.REMOVE)
     private List<String> imagens;
+
+    public Postagem(String titulo, String texto, String autor) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.autor = autor;
+    }
 
     public String getDataPublicacaoFormatada() {
         if (dataPublicacao != null) {

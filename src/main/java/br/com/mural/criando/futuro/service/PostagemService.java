@@ -11,7 +11,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -20,11 +22,13 @@ import java.util.concurrent.TimeUnit;
 public class PostagemService {
 
     private final PostagemRepository postagemRepository;
+    private final ImgurService imgurService;
     private final Cache<String, Page<PostagemAbreviada>> cachePostagensAbreviadas;
 
 
-    public PostagemService(PostagemRepository postagemRepository) {
+    public PostagemService(PostagemRepository postagemRepository, ImgurService imgurService) {
         this.postagemRepository = postagemRepository;
+        this.imgurService = imgurService;
         this.cachePostagensAbreviadas = Caffeine.newBuilder()
                 .expireAfterWrite(7, TimeUnit.DAYS)
                 .maximumSize(1000)
@@ -39,9 +43,6 @@ public class PostagemService {
         return postagemRepository.findById(id);
     }
 
-    public void savePostagem(Postagem postagem) {
-        postagemRepository.save(postagem);
-    }
 
     public void deletePostagem(Long id) {
         postagemRepository.deleteById(id);
@@ -80,4 +81,22 @@ public class PostagemService {
         cachePostagensAbreviadas.invalidate("postagens");
     }
 
+    public void criarNovaPostagem(String titulo, String autor, String texto, MultipartFile[] imagens) {
+        try{
+            Postagem postagem = new Postagem(titulo, texto, autor);
+            if (imagens != null && imagens.length > 0) {
+                List<String> urlsImagens = new ArrayList<>();
+                for (MultipartFile imagem : imagens) {
+                    String url = imgurService.uploadImage(imagem);
+                    urlsImagens.add(url);
+                }
+                postagem.setImagens(urlsImagens);
+            }
+            postagemRepository.save(postagem);
+        } catch (Exception ignored) {
+
+        }
+
+
+    }
 }

@@ -5,6 +5,7 @@ import br.com.mural.criando.futuro.model.postagem.PostagemAbreviada;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
@@ -34,4 +35,8 @@ public class PageService {
         return "principais/postagem";
     }
 
+    public String postarNoticia(String titulo, String autor, String texto, MultipartFile[] imagens) {
+        postagemService.criarNovaPostagem(titulo, autor, texto, imagens);
+        return "redirect:/criarPostagem";
+    }
 }
