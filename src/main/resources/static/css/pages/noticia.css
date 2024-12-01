@@ -8,9 +8,9 @@
 
 /* Sidebar */
 .sidebar {
-    background-color: #EAF7FF; /* Azul claro suave */
+    background-color: #EAF7FF;
     padding: 20px;
-    border-left: 4px solid #5BC0EB; /* Azul mais vibrante */
+    border-left: 4px solid #5BC0EB;
     border-radius: 10px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .sidebar a:hover {
-    color: #FFD700; /* Amarelo suave */
+    color: #FFD700;
 }
 
 /* Carousel */
@@ -42,7 +42,7 @@
     margin-top: 20px;
     border-radius: 10px;
     overflow: hidden;
-    background-color: #F7F7F7; /* Fundo suave para contraste */
+    background-color: #F7F7F7;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -82,7 +82,7 @@
 
 /* Título da notícia */
 .news-title {
-    color: #5BC0EB; /* Azul claro vibrante */
+    color: #5BC0EB;
     font-weight: 700;
     font-size: 2.5rem;
     margin-bottom: 15px;

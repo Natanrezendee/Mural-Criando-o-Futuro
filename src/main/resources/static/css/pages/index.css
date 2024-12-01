@@ -32,7 +32,7 @@
 
 /* Título das notícias */
 .news-title {
-    color: #5BC0EB; /* Azul claro */
+    color: #5BC0EB;
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 20px;
@@ -41,53 +41,53 @@
 
 /* Botões */
 .news-button {
-    background-color: transparent; /* Fundo transparente */
-    color: #19779f; /* Cor do texto em azul suave */
-    border: 2px solid #19779f; /* Borda fina e colorida */
-    padding: 6px 16px; /* Diminui o espaçamento interno */
-    border-radius: 25px; /* Bordas mais arredondadas */
+    background-color: transparent;
+    color: #19779f;
+    border: 2px solid #19779f;
+    padding: 6px 16px;
+    border-radius: 25px;
     font-weight: 600;
-    font-size: 0.9rem; /* Diminui o tamanho da fonte */
-    text-transform: uppercase; /* Deixa o texto em maiúsculas */
-    transition: all 0.3s ease; /* Transição suave para hover e focus */
-    cursor: pointer; /* Indica que o botão é clicável */
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .news-button:hover {
-    background-color: #19779f; /* Cor de fundo quando passa o mouse */
-    color: #fff; /* Cor do texto em branco */
-    transform: translateY(-2px); /* Levanta o botão levemente */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
+    background-color: #19779f;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .news-button:focus {
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 5px rgba(0, 82, 140, 0.4); /* Adiciona uma borda de foco sutil */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 82, 140, 0.4);
 }
 
 .btn-primary {
-    background-color: transparent; /* Fundo transparente */
-    color: #19779f; /* Cor do texto em azul */
-    border: 2px solid #19779f; /* Borda fina e colorida */
-    padding: 6px 16px; /* Diminui o padding */
-    border-radius: 25px; /* Bordas arredondadas */
+    background-color: transparent;
+    color: #19779f;
+    border: 2px solid #19779f;
+    padding: 6px 16px;
+    border-radius: 25px;
     font-weight: 600;
-    font-size: 0.9rem; /* Tamanho da fonte ajustado */
+    font-size: 0.9rem;
     text-transform: uppercase;
-    transition: all 0.3s ease; /* Transição suave */
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .btn-primary:hover {
-    background-color: #19779f; /* Cor de fundo ao passar o mouse */
-    color: #fff; /* Cor do texto em branco */
-    transform: translateY(-2px); /* Levanta o botão levemente */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona sombra suave */
+    background-color: #19779f;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-primary:focus {
-    outline: none; /* Remove o contorno padrão */
-    box-shadow: 0 0 5px rgba(0, 82, 140, 0.4); /* Adiciona foco suave */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 82, 140, 0.4);
 }
 
 /* Cartões de notícias */
@@ -158,6 +158,6 @@
 
 @media (max-width: 768px) {
     .hero-image {
-        object-position: 20% center; /* Alinha a imagem completamente à esquerda */
+        object-position: 20% center;
     }
 }

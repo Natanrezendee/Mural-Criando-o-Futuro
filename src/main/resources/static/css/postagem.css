@@ -129,7 +129,7 @@ textarea {
 
 .drag-drop-area:hover {
     background-color: #f1f1f1;
-    border-color: #4CAF50; /* Altera a cor da borda no hover */
+    border-color: #4CAF50;
 }
 
 .drag-drop-area span {
@@ -145,12 +145,12 @@ textarea {
 
 /* Feedback quando as imagens são arrastadas */
 .drag-drop-area.drag-over {
-    background-color: #e9ffe9; /* Cor de fundo mais suave quando o arquivo está sendo arrastado */
-    border-color: #66bb6a; /* Cor mais forte para a borda */
+    background-color: #e9ffe9;
+    border-color: #66bb6a;
 }
 
 input[type="file"] {
-    display: none; /* Esconde o input de arquivo original */
+    display: none;
 }
 
 /* Imagem de visualização */
