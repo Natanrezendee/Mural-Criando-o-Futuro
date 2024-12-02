@@ -15,7 +15,7 @@
     <div th:replace="~{componentes/navbar}"></div>
 
     <div class="main-content">
-        <h2>Bem-vindo ao Dashboard</h2>
+        <h2>Criar Postagem</h2>
         <p>Aqui você pode postar novas notícias.</p>
 
         <form action="/postar-postagem" method="POST" enctype="multipart/form-data">
@@ -38,6 +38,8 @@
                 <div class="drag-drop-area" id="drag-drop-area">
                     <span>Arraste suas imagens aqui</span>
                 </div>
+                <!-- Área de pré-visualização de imagens -->
+                <div class="preview-container"></div>
             </div>
 
             <button type="submit" class="submit-btn">Enviar Postagem</button>
@@ -55,13 +57,35 @@
 
         // Função para mostrar as imagens selecionadas
         function showPreview(files) {
-            previewContainer.innerHTML = ''; // Limpa as imagens anteriores
+            // Itera sobre os arquivos selecionados
             Array.from(files).forEach(file => {
                 const reader = new FileReader();
                 reader.onload = function (e) {
+                    // Cria o contêiner da imagem
+                    const imageContainer = document.createElement('div');
+                    imageContainer.classList.add('image-container');
+
+                    // Cria a imagem
                     const img = document.createElement('img');
                     img.src = e.target.result;
-                    previewContainer.appendChild(img);
+                    img.classList.add('preview-image');
+
+                    // Cria o botão de remoção (X)
+                    const removeButton = document.createElement('button');
+                    removeButton.classList.add('remove-btn');
+                    removeButton.textContent = '×';
+
+                    // Adiciona o evento de remoção
+                    removeButton.addEventListener('click', function() {
+                        previewContainer.removeChild(imageContainer);
+                    });
+
+                    // Adiciona a imagem e o botão ao contêiner da imagem
+                    imageContainer.appendChild(img);
+                    imageContainer.appendChild(removeButton);
+
+                    // Adiciona o contêiner da imagem à área de pré-visualização
+                    previewContainer.appendChild(imageContainer);
                 };
                 reader.readAsDataURL(file);
             });
@@ -97,6 +121,7 @@
         fileInput.addEventListener('change', function () {
             showPreview(fileInput.files); // Exibe as imagens selecionadas
         });
+
     </script>
 
 </body>

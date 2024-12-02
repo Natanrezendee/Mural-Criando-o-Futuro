@@ -35,8 +35,4 @@ public class PageService {
         return "principais/postagem";
     }
 
-    public String postarNoticia(String titulo, String autor, String texto, MultipartFile[] imagens) {
-        postagemService.criarNovaPostagem(titulo, autor, texto, imagens);
-        return "redirect:/criarPostagem";
-    }
 }

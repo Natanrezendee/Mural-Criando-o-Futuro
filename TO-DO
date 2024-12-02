@@ -4,15 +4,19 @@ ideias de estilização:
   modificar a imagem de fundo para as abas diferentes do index para a imagem da creche com um tom de transparencia alto
 
 ajeitar formulario de postagem:
-  criar controller
-  ajeitar o form
-  estilizar o site
+  criar controller - ok
+  ajeitar o form - ok
+  estilizar o site - ok
   
 
+
+ // fazendo agora
 começar a editar o cardapio:
   criar endpoint
   ajeitar base de dados
   ajeitar view no front
+
+
 
 ajeitar validação de login para buscar usuario na base de dados:
   remover chamada estática de user=teste / senha=teste

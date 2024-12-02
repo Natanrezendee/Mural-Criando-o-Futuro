@@ -40,12 +40,4 @@ public class PageController {
     public String contato() {
         return "principais/contato";
     }
-
-    @PostMapping("/postar-postagem")
-    public String postarNoticia(@RequestParam("titulo") String titulo,
-                                @RequestParam("autor") String autor,
-                                @RequestParam("postagem") String texto,
-                                @RequestParam(value = "imagens", required = false) MultipartFile[] imagens) {
-        return pageService.postarNoticia(titulo, autor, texto, imagens);
-    }
 }

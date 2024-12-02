@@ -10,19 +10,14 @@ import java.util.List;
 @Setter
 @Entity
 public class Cardapio {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String tipo; // "Parcial" ou "Integral"
-
-    @ManyToOne
-    @JoinColumn(name = "dia_id")
-    private Dia dia;
+    @Enumerated(EnumType.STRING)
+    private TipoCardapio tipo; // Parcial ou Integral
 
     @OneToMany(mappedBy = "cardapio")
-    private List<Horario> horarios;
-
-    // Getters e Setters
+    private List<Refeicao> refeicoes;
 }
+

@@ -10,14 +10,14 @@ import java.util.List;
 @Setter
 @Entity
 public class Semana {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome; // A, B, C, D, etc.
+    @Enumerated(EnumType.STRING)
+    private SemanaTipo tipo; // A, B, C ou D
 
     @OneToMany(mappedBy = "semana")
     private List<Dia> dias;
-
 }
+

@@ -36,18 +36,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests
-                                .requestMatchers("/css/**", "/js/**").permitAll()
-                                .requestMatchers(HttpMethod.POST).permitAll()
+                .authorizeHttpRequests(authorizeRequests -> authorizeRequests
                                 .requestMatchers("/criarPostagem").authenticated()
+                                .requestMatchers(HttpMethod.POST,"/postar-postagem").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login")
                                 .defaultSuccessUrl("/criarPostagem", true)
-                                .defaultSuccessUrl("/postar-postagem")
                                 .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);

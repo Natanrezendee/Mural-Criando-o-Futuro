@@ -7,19 +7,18 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Horario {
-
+public class Refeicao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String periodo; // "Manhã", "Almoço", "Tarde"
+    @Enumerated(EnumType.STRING)
+    private TipoRefeicao tipo; // Café da manhã, Almoço, Lanche da tarde
+
+    private String descricao; // Descrição dos alimentos
 
     @ManyToOne
     @JoinColumn(name = "cardapio_id")
     private Cardapio cardapio;
-
-    private String comidas; // String contendo as comidas disponíveis
-
 }
 

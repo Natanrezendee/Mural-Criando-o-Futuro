@@ -10,18 +10,23 @@ import java.util.List;
 @Setter
 @Entity
 public class Dia {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String nome; // Ex: Segunda-feira, Terça-feira, etc.
 
     @ManyToOne
     @JoinColumn(name = "semana_id")
     private Semana semana;
 
-    @OneToMany(mappedBy = "dia")
-    private List<Cardapio> cardapios;
+    @Enumerated(EnumType.STRING)
+    private DiaSemana diaSemana; // Segunda, Terça, Quarta, etc.
 
+    @OneToOne
+    @JoinColumn(name = "cardapio_parcial_id")
+    private Cardapio cardapioParcial;
+
+    @OneToOne
+    @JoinColumn(name = "cardapio_integral_id")
+    private Cardapio cardapioIntegral;
 }
+
