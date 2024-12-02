@@ -19,6 +19,7 @@
         <p>Aqui você pode postar novas notícias.</p>
 
         <form action="/postar-postagem" method="POST" enctype="multipart/form-data">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
             <div class="form-group">
                 <label for="titulo">Título:</label>
                 <input type="text" id="titulo" name="titulo" placeholder="Digite o título da notícia" required />

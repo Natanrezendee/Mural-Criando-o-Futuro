@@ -36,7 +36,7 @@ public class PostagemController {
                                 @RequestParam("postagem") String texto,
                                 @RequestParam(value = "imagens", required = false) MultipartFile[] imagens) {
         postagemService.criarNovaPostagem(titulo, autor, texto, imagens);
-        return "redirect:/criarPostagem";
+        return "redirect:/";
     }
 
     @GetMapping("/excluir-postagens")

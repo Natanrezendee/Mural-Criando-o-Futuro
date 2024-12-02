@@ -18,3 +18,4 @@ public class GlobalExceptionHandler implements ErrorController {
         return "redirect:/";  // Redireciona para a página principal
     }
 }
+

@@ -6,6 +6,8 @@ import br.com.mural.criando.futuro.model.postagem.PostagemTitulo;
 import br.com.mural.criando.futuro.repository.PostagemRepository;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -13,14 +15,14 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 @Service
 public class PostagemService {
 
+    private static final Logger logger = LoggerFactory.getLogger(PostagemService.class);
     private final PostagemRepository postagemRepository;
     private final ImgurService imgurService;
     private final Cache<String, Page<PostagemAbreviada>> cachePostagensAbreviadas;
@@ -48,13 +50,13 @@ public class PostagemService {
 
     public void deletePostagem(Long id) {
         postagemRepository.deleteById(id);
-        clearCache();
+        cachePostagensAbreviadas.invalidateAll();
     }
 
     public Page<PostagemAbreviada> getPostagensAbreviadasPage(int pagina, int tamanho) {
         Pageable pageable = PageRequest.of(pagina, tamanho);
 
-        String cacheKey = "postagens_page_" + pagina + "_size_" + tamanho;
+        String cacheKey = String.format("postagens_page_%d_size_%d", pagina, tamanho);
         Page<PostagemAbreviada> postagensAbreviadas = cachePostagensAbreviadas.getIfPresent(cacheKey);
 
         if (postagensAbreviadas == null) {
@@ -79,26 +81,28 @@ public class PostagemService {
         }
     }
 
-    private void clearCache() {
-        cachePostagensAbreviadas.invalidate("postagens");
-    }
-
     public void criarNovaPostagem(String titulo, String autor, String texto, MultipartFile[] imagens) {
-        try{
-            Postagem postagem = new Postagem(titulo, texto, autor);
-            if (imagens != null && imagens.length > 0) {
-                List<String> urlsImagens = new ArrayList<>();
-                for (MultipartFile imagem : imagens) {
-                    String url = imgurService.uploadImage(imagem);
-                    urlsImagens.add(url);
-                }
-                postagem.setImagens(urlsImagens);
-            }
-            postagemRepository.save(postagem);
-        } catch (Exception ignored) {
+        Postagem postagem = new Postagem(titulo, texto, autor);
 
+        if (imagens != null && Arrays.stream(imagens).anyMatch(imagem -> !imagem.getOriginalFilename().isEmpty())) {
+            List<String> urlsImagens = Arrays.stream(imagens)
+                    .map(this::uploadImageSafely)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
+
+            postagem.setImagens(urlsImagens);
         }
 
+        postagemRepository.save(postagem);
+        cachePostagensAbreviadas.invalidateAll();
+    }
 
+    private String uploadImageSafely(MultipartFile imagem) {
+        try {
+            return imgurService.uploadImage(imagem);
+        } catch (Exception e) {
+            logger.error("Erro ao fazer upload da imagem: {}", imagem.getOriginalFilename(), e);
+            return null;
+        }
     }
 }
