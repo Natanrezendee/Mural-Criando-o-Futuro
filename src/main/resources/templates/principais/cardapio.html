@@ -18,11 +18,12 @@
     <div class="main-content">
         <div class="container mt-4">
             <!-- Cabeçalho -->
+
             <div class="cardapio-header">
                 <h1>Cardápio</h1>
-                <p th:text="'Semana ' + ${semanaAtual.semana.tipo} + ': ' + ${semanaAtual.inicioSemana} + ' - ' + ${semanaAtual.fimSemana}"></p>
+                <p class="periodo-semana" th:text="${semanaAtual.inicioSemana} +' - '+ ${semanaAtual.fimSemana} + ' -------> Semana ' + ${semanaAtual.semana.tipo}">
+                </p>
             </div>
-
             <!-- Tabela de Cardápio -->
             <div class="row">
                 <!-- Parcial -->

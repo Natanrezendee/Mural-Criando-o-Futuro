@@ -1,19 +1,94 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Estilo do cabeçalho */
 .cardapio-header {
     text-align: center;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
+
 .cardapio-header h1 {
+    font-size: 36px;
     color: #00528C;
-    font-size: 28px;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
-.cardapio-imagem {
-    display: flex;
-    justify-content: center;
+
+.cardapio-header p {
+    font-size: 18px;
+    color: #666;
+}
+
+.periodo-semana {
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+    margin-top: 10px;
+    font-weight: bold;
+    display: block;
+}
+
+.cardapio-header .periodo-semana {
+    text-align: left;
+    margin-left: 20px; /* Ajuste a margem conforme necessário */
+}
+/* Estilo das tabelas */
+.cardapio-table {
     margin: 20px 0;
+    padding: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-.cardapio-imagem img {
-    max-width: 100%;
-    height: auto;
+
+.cardapio-table h4 {
+    font-size: 24px;
+    color: #00528C;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #00528C;
+    color: #fff;
+}
+
+th, td {
+    text-align: center;
+    padding: 10px;
     border: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #d8eaff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .cardapio-table {
+        margin-bottom: 20px;
+    }
+
+    .cardapio-header h1 {
+        font-size: 28px;
+    }
+
+    .cardapio-header p {
+        font-size: 16px;
+    }
 }
