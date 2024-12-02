@@ -31,6 +31,10 @@ public class PageController {
         return pageService.carregarDadosPostagem(id, model);
     }
 
+    @GetMapping("/cardapio")
+    public String cardapio(Model model){
+        return pageService.carregarDadosCardapio(model);
+    }
     @GetMapping("/informacoes")
     public String informacoes() {
         return "principais/informacoes";

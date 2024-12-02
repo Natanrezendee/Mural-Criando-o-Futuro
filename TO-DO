@@ -12,8 +12,8 @@ ajeitar formulario de postagem:
 
  // fazendo agora
 começar a editar o cardapio:
-  criar endpoint
-  ajeitar base de dados
+  criar endpoint - ok
+  ajeitar base de dados - ok
   ajeitar view no front
 
 
@@ -23,3 +23,221 @@ ajeitar validação de login para buscar usuario na base de dados:
   criar funcionalidade na base de dados
 
 criar pagina para cadastrar um novo usuario ao fazer login
+
+
+
+IMPORTANTE
+
+metodo para att base de dados
+
+public void salvarSemanas() {
+        semanaRepository.findById(4L).ifPresent(semana -> {
+            List<Dia> diaSemanas = new ArrayList<>();
+            Dia dia = new Dia();
+            dia.setSemana(semana);
+            dia.setDiaSemana(DiaSemana.SEGUNDA);
+            Cardapio cardapioParcial = new Cardapio();
+            cardapioParcial.setTipo(TipoCardapio.PARCIAL);
+            cardapioParcial = cardapioRepository.save(cardapioParcial);
+            Refeicao cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite batido com banana, maçã e aveia");
+            Refeicao almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz com cenoura e passas
+                    Feijão
+                    Ovo mexido
+                    Batata em camadas
+                    Sobremesa: fruta""");
+            Refeicao janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite batido com banana, maçã e aveia");
+            cafe.setCardapio(cardapioParcial);
+            almoco.setCardapio(cardapioParcial);
+            janta.setCardapio(cardapioParcial);
+            cafe = refeicaoRepository.save(cafe);
+            almoco = refeicaoRepository.save(almoco);
+            janta = refeicaoRepository.save(janta);
+            cardapioParcial.setRefeicoes(new ArrayList<>(Arrays.asList(cafe, almoco, janta)));
+            cardapioRepository.save(cardapioParcial);
+            dia.setCardapioParcial(cardapioParcial);
+
+
+            Cardapio cardapioIntegral = new Cardapio();
+            cardapioIntegral.setTipo(TipoCardapio.INTEGRAL);
+            cardapioIntegral = cardapioRepository.save(cardapioIntegral);
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite batido com maracujá e banana\n" +
+                    "Fruta");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Feijão
+                    Arroz
+                    Ovo mexido
+                    Batatas em camadas
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite batido com banana e aveia\n" +
+                    "Fruta");
+            dia = saves(semana, diaSemanas, dia, cafe, almoco, janta, cardapioIntegral);
+
+
+            dia.setDiaSemana(DiaSemana.TERCA);
+            cardapioParcial = new Cardapio();
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite com café\n" +
+                    "Pão com manteiga");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Frango com cenoura
+                    Salada de batata e repolho roxo
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite batido com banana e aveia");
+            cardapioIntegral = cardapioParcial(dia, cardapioParcial, cafe, almoco, janta);
+
+
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, """
+                    Leite com café
+                    Pão com ovo mexido
+                    Fruta""");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Frango com cenoura
+                    Salada de batata e repolho roxo
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Arroz doce\n" +
+                    "Fruta");
+            dia = saves(semana, diaSemanas, dia, cafe, almoco, janta, cardapioIntegral);
+
+
+
+            dia.setDiaSemana(DiaSemana.QUARTA);
+            cardapioParcial = new Cardapio();
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite batido com banana e aveia");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Gratinado de frango (batata inglesa e frango)
+                    Salada de repolho, cenoura e tomate
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite com café\n" +
+                    "Pão com manteiga");
+            cardapioIntegral = cardapioParcial(dia, cardapioParcial, cafe, almoco, janta);
+
+
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, """
+                    Leite batido com banana
+                    Pão com manteiga
+                    Fruta""");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Gratinado de frango (batata inglesa e frango)
+                    Salada de repolho, cenoura e tomate
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, """
+                    Leite com café
+                    Pão com ovo mexido
+                    Fruta""");
+            dia = saves(semana, diaSemanas, dia, cafe, almoco, janta, cardapioIntegral);
+
+
+
+            dia.setDiaSemana(DiaSemana.QUINTA);
+            cardapioParcial = new Cardapio();
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite com café\n" +
+                    "Pão com manteiga");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Macarrão nutritivo (cenoura, brócolis e
+                    abobrinha)
+                    Feijão
+                    Carne moída
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite batido com maracujá e banana");
+            cardapioIntegral = cardapioParcial(dia, cardapioParcial, cafe, almoco, janta);
+
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, """
+                    Leite com café
+                    Pão com manteiga
+                    Fruta""");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Feijão
+                    Macarrão nutritivo (cenoura, brócolis e
+                    abobrinha)
+                    Carne moída
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, """
+                    Leite batido com banana
+                    Pão com ovo e cenoura
+                    Fruta""");
+            dia = saves(semana, diaSemanas, dia, cafe, almoco, janta, cardapioIntegral);
+
+
+            dia.setDiaSemana(DiaSemana.SEXTA);
+            cardapioParcial = new Cardapio();
+            cardapioParcial.setTipo(TipoCardapio.PARCIAL);
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, "Leite batido com maracujá e banana");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Frango ensopado
+                    Repolho sauté
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, "Leite com café\n" +
+                    "Pão com manteiga");
+            cardapioIntegral = cardapioParcial(dia, cardapioParcial, cafe, almoco, janta);
+
+
+            cafe = new Refeicao(TipoRefeicao.CAFE_DA_MANHA, """
+                    Leite batido com banana
+                    Pão com manteiga
+                    Fruta""");
+            almoco = new Refeicao(TipoRefeicao.ALMOCO, """
+                    Arroz
+                    Feijão
+                    Frango ensopado
+                    Repolho sauté
+                    Sobremesa: fruta""");
+            janta = new Refeicao(TipoRefeicao.LANCHE_TARDE, """
+                    Leite batido com maçã
+                    Pão com ovo mexido
+                    Fruta""");
+            saves(semana, diaSemanas, dia, cafe, almoco, janta, cardapioIntegral);
+
+            semana.setDias(diaSemanas);
+
+            semanaRepository.save(semana);
+        });
+    }
+
+    private Cardapio cardapioParcial(Dia dia, Cardapio cardapioParcial, Refeicao cafe, Refeicao almoco, Refeicao janta) {
+        Cardapio cardapioIntegral;
+        cardapioParcial.setTipo(TipoCardapio.PARCIAL);
+        cardapioParcial = cardapioRepository.save(cardapioParcial);
+        cafe.setCardapio(cardapioParcial);
+        almoco.setCardapio(cardapioParcial);
+        janta.setCardapio(cardapioParcial);
+        cafe = refeicaoRepository.save(cafe);
+        almoco = refeicaoRepository.save(almoco);
+        janta = refeicaoRepository.save(janta);
+        cardapioParcial.setRefeicoes(new ArrayList<>(Arrays.asList(cafe, almoco, janta)));
+        cardapioRepository.save(cardapioParcial);
+        dia.setCardapioParcial(cardapioParcial);
+
+        cardapioIntegral = new Cardapio();
+        cardapioIntegral.setTipo(TipoCardapio.INTEGRAL);
+        cardapioIntegral = cardapioRepository.save(cardapioIntegral);
+        return cardapioIntegral;
+    }
+
+    private Dia saves(Semana semana, List<Dia> diaSemanas, Dia dia, Refeicao cafe, Refeicao almoco, Refeicao janta, Cardapio cardapioIntegral) {
+        cafe.setCardapio(cardapioIntegral);
+        almoco.setCardapio(cardapioIntegral);
+        janta.setCardapio(cardapioIntegral);
+        cafe = refeicaoRepository.save(cafe);
+        almoco = refeicaoRepository.save(almoco);
+        janta = refeicaoRepository.save(janta);
+        cardapioIntegral.setRefeicoes(new ArrayList<>(Arrays.asList(cafe, almoco, janta)));
+        cardapioRepository.save(cardapioIntegral);
+        dia.setCardapioIntegral(cardapioIntegral);
+        diaRepository.save(dia);
+        diaSemanas.add(dia);
+
+
+        dia = new Dia();
+        dia.setSemana(semana);
+        return dia;
+    }

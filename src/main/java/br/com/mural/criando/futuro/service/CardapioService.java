@@ -1,13 +1,13 @@
 package br.com.mural.criando.futuro.service;
 
-import br.com.mural.criando.futuro.model.cardapio.Dia;
-import br.com.mural.criando.futuro.model.cardapio.Semana;
-import br.com.mural.criando.futuro.model.cardapio.SemanaTipo;
+import br.com.mural.criando.futuro.model.cardapio.*;
+import br.com.mural.criando.futuro.model.cardapio.enums.SemanaTipo;
 import br.com.mural.criando.futuro.repository.DiaRepository;
 import br.com.mural.criando.futuro.repository.SemanaRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -22,13 +22,17 @@ public class CardapioService {
         this.diaRepository = diaRepository;
     }
 
-    public Semana getSemanaAtual() {
+    public SemanaDTO getSemanaAtual() {
         LocalDate dataAtual = LocalDate.now();
-        int semanaNumero = (dataAtual.getDayOfYear() - 1) / 7; // Calcula o número da semana no ano
-        SemanaTipo semanaAtual = SemanaTipo.values()[semanaNumero % 4]; // Ciclo de 4 semanas
+        LocalDate inicioSemana = dataAtual.with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        LocalDate fimSemana = inicioSemana.plusDays(6);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        SemanaTipo semanaAtual = SemanaTipo.values()[(dataAtual.getDayOfYear() - 1) / 7 % 4];
 
-        return semanaRepository.findByTipo(semanaAtual)
-                .orElseThrow(() -> new RuntimeException("Semana não encontrada"));
+        String inicioFormatado = inicioSemana.format(formatter);
+        String fimFormatado = fimSemana.format(formatter);
+        Semana semana = semanaRepository.findByTipo(semanaAtual).get();
+        return new SemanaDTO(semana, inicioFormatado, fimFormatado);
     }
 
     public List<Dia> getCardapiosDaSemana(Semana semana) {

@@ -1,5 +1,6 @@
 package br.com.mural.criando.futuro.model.cardapio;
 
+import br.com.mural.criando.futuro.model.cardapio.enums.SemanaTipo;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +16,7 @@ public class Semana {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private SemanaTipo tipo; // A, B, C ou D
+    private SemanaTipo tipo;
 
     @OneToMany(mappedBy = "semana")
     private List<Dia> dias;

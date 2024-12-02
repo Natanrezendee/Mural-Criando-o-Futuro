@@ -19,7 +19,7 @@ public class Dia {
     private Semana semana;
 
     @Enumerated(EnumType.STRING)
-    private DiaSemana diaSemana; // Segunda, Terça, Quarta, etc.
+    private DiaSemana diaSemana;
 
     @OneToOne
     @JoinColumn(name = "cardapio_parcial_id")
