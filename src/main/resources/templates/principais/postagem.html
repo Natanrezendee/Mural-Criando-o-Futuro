@@ -46,11 +46,13 @@
 
                 <div class="col-md-4">
                     <div class="sidebar">
-                        <h4>Últimas Postagens</h4>
-                        <div th:each="postagem : ${ultimasPostagens}">
-                            <a th:href="@{/postagem/{id}(id=${postagem.id})}"
-                               th:text="${postagem.titulo}">
-                            </a>
+                        <h4 class="sidebar-title">Últimas Postagens</h4>
+                        <div class="post-list">
+                            <div th:each="postagem : ${ultimasPostagens}" class="post-item">
+                                <a th:href="@{/postagem/{id}(id=${postagem.id})}"
+                                   th:text="${postagem.titulo}"
+                                   class="post-link"></a>
+                            </div>
                         </div>
                     </div>
                 </div>

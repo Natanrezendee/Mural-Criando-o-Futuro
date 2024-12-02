@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.logging.Logger;
-/*
+
 @Controller
 public class GlobalExceptionHandler implements ErrorController {
 
@@ -18,4 +18,3 @@ public class GlobalExceptionHandler implements ErrorController {
         return "redirect:/";  // Redireciona para a página principal
     }
 }
-*/

@@ -20,4 +20,10 @@ public interface PostagemRepository extends JpaRepository<Postagem, Long> {
     @Query("SELECT n.imagens FROM Postagem n WHERE n.id = :id")
     List<String> findImagensByPostagemId(Long id);
     List<PostagemTitulo> findAllByOrderByDataPublicacaoDesc(Pageable pageable);
+    @Query("SELECT new br.com.mural.criando.futuro.model.postagem.PostagemAbreviada(" +
+            "n.id, n.titulo, " +
+            "CASE WHEN LENGTH(n.texto) > 100 THEN CONCAT(SUBSTRING(n.texto, 1, 150), '...') ELSE n.texto END) " +
+            "FROM Postagem n " +
+            "ORDER BY n.dataPublicacao DESC")
+    List<PostagemAbreviada> findAllPostagensAbreviadas();
 }

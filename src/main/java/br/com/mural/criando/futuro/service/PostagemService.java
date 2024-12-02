@@ -35,8 +35,10 @@ public class PostagemService {
                 .build();
     }
 
-    public List<Postagem> getAllPostagem() {
-        return postagemRepository.findAll();
+    public List<PostagemAbreviada> getAllPostagensAbreviadas() {
+        List<PostagemAbreviada> postagensAbreviadas = postagemRepository.findAllPostagensAbreviadas();
+        carregarImagensParaPostagens(postagensAbreviadas);
+        return postagensAbreviadas;
     }
 
     public Optional<Postagem> getPostagemById(Long id) {

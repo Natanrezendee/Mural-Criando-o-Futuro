@@ -37,14 +37,17 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                                .requestMatchers("/criarPostagem").authenticated()
+                                .requestMatchers("/criar-postagem").authenticated()
+                                .requestMatchers("/gerenciar-postagens").authenticated()
+                                .requestMatchers("/excluir-postagens").authenticated()
                                 .requestMatchers(HttpMethod.POST,"/postar-postagem").authenticated()
+                                .requestMatchers(HttpMethod.POST,"/excluir-postagem").authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin
                                 .loginPage("/login")
-                                .defaultSuccessUrl("/criarPostagem", true)
+                                .defaultSuccessUrl("/gerenciar-postagens", true)
                                 .permitAll()
                 )
                 .logout(LogoutConfigurer::permitAll);
