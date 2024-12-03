@@ -15,14 +15,14 @@ public class GlobalExceptionHandler implements ErrorController {
 
     @ExceptionHandler(Exception.class)
     public String handleAllExceptions(Exception e, Model model) {
-        logger.error("An error occurred: {}", e.getMessage(), e);
+        logger.error("An error occurred: {}", e.toString()); // Aqui você pode personalizar ainda mais a mensagem.
         model.addAttribute("errorMessage", e.getMessage());
         return "redirect:/";
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
     public String handle404(NoHandlerFoundException e, Model model) {
-        logger.warn("Page not found: {}", e.getMessage());
+        logger.error("Page not found: {}", e.toString()); // Aqui você pode personalizar ainda mais a mensagem.
         model.addAttribute("errorMessage", "Page not found");
         return "redirect:/";
     }
