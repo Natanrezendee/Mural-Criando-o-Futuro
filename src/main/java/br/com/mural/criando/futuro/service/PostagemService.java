@@ -84,7 +84,7 @@ public class PostagemService {
     public void criarNovaPostagem(String titulo, String autor, String texto, MultipartFile[] imagens) {
         Postagem postagem = new Postagem(titulo, texto, autor);
 
-        if (imagens != null && Arrays.stream(imagens).anyMatch(imagem -> !imagem.getOriginalFilename().isEmpty())) {
+        if (imagens != null && Arrays.stream(imagens).anyMatch(imagem -> !Objects.requireNonNull(imagem.getOriginalFilename()).isEmpty())) {
             List<String> urlsImagens = Arrays.stream(imagens)
                     .map(this::uploadImageSafely)
                     .filter(Objects::nonNull)

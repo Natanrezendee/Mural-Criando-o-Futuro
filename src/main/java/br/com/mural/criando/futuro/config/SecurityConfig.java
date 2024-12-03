@@ -36,12 +36,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                                .requestMatchers("/criar-postagem").authenticated()
-                                .requestMatchers("/gerenciar-postagens").authenticated()
-                                .requestMatchers("/excluir-postagens").authenticated()
-                                .requestMatchers(HttpMethod.POST,"/postar-postagem").authenticated()
-                                .requestMatchers(HttpMethod.POST,"/excluir-postagem").authenticated()
-                                .anyRequest().permitAll()
+                        .requestMatchers("/criar-postagem").authenticated()
+                        .requestMatchers("/gerenciar-postagens").authenticated()
+                        .requestMatchers("/excluir-postagens").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/postar-postagem").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/excluir-postagem").authenticated()
+                        .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->
                         formLogin

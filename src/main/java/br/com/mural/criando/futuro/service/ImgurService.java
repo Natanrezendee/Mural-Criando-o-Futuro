@@ -32,7 +32,7 @@ public class ImgurService {
             ObjectMapper objectMapper = new ObjectMapper();
             JsonNode jsonResponse = objectMapper.readTree(response.getBody());
             return jsonResponse.path("data").path("link").asText();
-        }  else {
+        } else {
             throw new Exception("Erro no upload da imagem.");
         }
     }

@@ -12,73 +12,74 @@
 </head>
 <body>
 <!-- Navbar -->
-    <div th:replace="~{componentes/navbar}"></div>
+<div th:replace="~{componentes/navbar}"></div>
 
-    <!-- Conteúdo Principal -->
-    <div class="main-content">
-        <div class="container mt-4">
-            <!-- Cabeçalho -->
+<!-- Conteúdo Principal -->
+<div class="main-content">
+    <div class="container mt-4">
+        <!-- Cabeçalho -->
 
-            <div class="cardapio-header">
-                <h1>Cardápio</h1>
-                <p class="periodo-semana" th:text="${semanaAtual.inicioSemana} +' - '+ ${semanaAtual.fimSemana} + ' -------> Semana ' + ${semanaAtual.semana.tipo}">
-                </p>
+        <div class="cardapio-header">
+            <h1>Cardápio</h1>
+            <p class="periodo-semana"
+               th:text="${semanaAtual.inicioSemana} +' - '+ ${semanaAtual.fimSemana} + ' -------> Semana ' + ${semanaAtual.semana.tipo}">
+            </p>
+        </div>
+        <!-- Tabela de Cardápio -->
+        <div class="row">
+            <!-- Parcial -->
+            <div class="col-md-6 cardapio-table">
+                <h4>Parcial</h4>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Café da Manhã</th>
+                        <th>Almoço</th>
+                        <th>Lanche da Tarde</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dia : ${semanaAtual.semana.dias}">
+                        <td th:text="${dia.diaSemana}">SEGUNDA</td>
+                        <td th:text="${dia.cardapioParcial.refeicoes[0].alimentos}"></td>
+                        <td th:text="${dia.cardapioParcial.refeicoes[1].alimentos}"></td>
+                        <td th:text="${dia.cardapioParcial.refeicoes[2].alimentos}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- Tabela de Cardápio -->
-            <div class="row">
-                <!-- Parcial -->
-                <div class="col-md-6 cardapio-table">
-                    <h4>Parcial</h4>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Dia</th>
-                            <th>Café da Manhã</th>
-                            <th>Almoço</th>
-                            <th>Lanche da Tarde</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="dia : ${semanaAtual.semana.dias}">
-                            <td th:text="${dia.diaSemana}">SEGUNDA</td>
-                            <td th:text="${dia.cardapioParcial.refeicoes[0].alimentos}"></td>
-                            <td th:text="${dia.cardapioParcial.refeicoes[1].alimentos}"></td>
-                            <td th:text="${dia.cardapioParcial.refeicoes[2].alimentos}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
 
-                <!-- Integral -->
-                <div class="col-md-6 cardapio-table">
-                    <h4>Integral</h4>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Dia</th>
-                            <th>Desjejum</th>
-                            <th>Almoço</th>
-                            <th>Lanche IV</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr th:each="dia : ${semanaAtual.semana.dias}">
-                            <td th:text="${dia.diaSemana}">SEGUNDA</td>
-                            <td th:text="${dia.cardapioIntegral.refeicoes[0].alimentos}"></td>
-                            <td th:text="${dia.cardapioIntegral.refeicoes[1].alimentos}"></td>
-                            <td th:text="${dia.cardapioIntegral.refeicoes[2].alimentos}"></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <!-- Integral -->
+            <div class="col-md-6 cardapio-table">
+                <h4>Integral</h4>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Dia</th>
+                        <th>Desjejum</th>
+                        <th>Almoço</th>
+                        <th>Lanche IV</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="dia : ${semanaAtual.semana.dias}">
+                        <td th:text="${dia.diaSemana}">SEGUNDA</td>
+                        <td th:text="${dia.cardapioIntegral.refeicoes[0].alimentos}"></td>
+                        <td th:text="${dia.cardapioIntegral.refeicoes[1].alimentos}"></td>
+                        <td th:text="${dia.cardapioIntegral.refeicoes[2].alimentos}"></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <div th:replace="~{componentes/footer}"></div>
+<!-- Footer -->
+<div th:replace="~{componentes/footer}"></div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

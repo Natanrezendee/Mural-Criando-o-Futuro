@@ -11,50 +11,50 @@
     <link rel="stylesheet" href="/css/pages/index.css">
 </head>
 <body>
-    <div th:replace="~{componentes/navbar}"></div>
+<div th:replace="~{componentes/navbar}"></div>
 
-    <div class="main-content">
-        <div class="container-fluid p-0">
-            <img src="/imagens/creche.png" alt="Imagem da Creche" class="hero-image">
-            <a class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
+<div class="main-content">
+    <div class="container-fluid p-0">
+        <img src="/imagens/creche.png" alt="Imagem da Creche" class="hero-image">
+        <a class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
+    </div>
 
-        <div class="container my-5">
-            <h2 class="news-title">Últimas Postagens</h2>
-            <div class="row mt-4" th:each="postagem : ${postagens}">
-                <div class="col-md-4">
-                    <img th:src="@{${postagem.imagem}}" class="img-fluid rounded" alt="Imagem da Notícia">
-                </div>
-                <div class="col-md-8">
-                    <h3 class="mt-2" th:text="${postagem.titulo}"></h3>
-                    <p th:text="${postagem.textoAbreviado}"></p>
-                    <a th:href="@{/postagem/{id}(id=${postagem.id})}" class="news-button">Continue lendo</a>
-                </div>
+    <div class="container my-5">
+        <h2 class="news-title">Últimas Postagens</h2>
+        <div class="row mt-4" th:each="postagem : ${postagens}">
+            <div class="col-md-4">
+                <img th:src="@{${postagem.imagem}}" class="img-fluid rounded" alt="Imagem da Notícia">
             </div>
-        </div>
-
-        <!-- Navegação de Página -->
-        <div class="d-flex justify-content-center mt-4">
-            <div th:if="${paginaAtual > 0}">
-                <a th:href="@{'/?page=' + ${paginaAtual - 1} + '&size=2'}" class="btn btn-primary ms-2">Voltar</a>
-            </div>
-            <div th:if="${paginaAtual < totalPaginas - 1}">
-                <a th:href="@{'/?page=' + ${paginaAtual + 1} + '&size=2'}" class="btn btn-primary ms-2">Avançar</a>
+            <div class="col-md-8">
+                <h3 class="mt-2" th:text="${postagem.titulo}"></h3>
+                <p th:text="${postagem.textoAbreviado}"></p>
+                <a th:href="@{/postagem/{id}(id=${postagem.id})}" class="news-button">Continue lendo</a>
             </div>
         </div>
     </div>
-    <div th:replace="~{componentes/footer}"></div>
 
-    <script>
-        document.querySelector('.scroll-down').addEventListener('click', function() {
-            document.querySelector('.container.my-5').scrollIntoView({
-                behavior: 'smooth'
-            });
+    <!-- Navegação de Página -->
+    <div class="d-flex justify-content-center mt-4">
+        <div th:if="${paginaAtual > 0}">
+            <a th:href="@{'/?page=' + ${paginaAtual - 1} + '&size=2'}" class="btn btn-primary ms-2">Voltar</a>
+        </div>
+        <div th:if="${paginaAtual < totalPaginas - 1}">
+            <a th:href="@{'/?page=' + ${paginaAtual + 1} + '&size=2'}" class="btn btn-primary ms-2">Avançar</a>
+        </div>
+    </div>
+</div>
+<div th:replace="~{componentes/footer}"></div>
+
+<script>
+    document.querySelector('.scroll-down').addEventListener('click', function () {
+        document.querySelector('.container.my-5').scrollIntoView({
+            behavior: 'smooth'
         });
-    </script>
+    });
+</script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

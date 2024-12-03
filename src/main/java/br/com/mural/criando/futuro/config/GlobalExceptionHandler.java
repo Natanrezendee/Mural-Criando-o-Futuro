@@ -15,7 +15,7 @@ public class GlobalExceptionHandler implements ErrorController {
     @RequestMapping("/error")
     public String handleError(Exception e, Model model) {
         logger.info(e.getMessage());
-        return "redirect:/";  // Redireciona para a página principal
+        return "redirect:/";
     }
 }
 

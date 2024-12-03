@@ -11,56 +11,59 @@
     <link rel="stylesheet" href="/css/pages/postagem.css">
 </head>
 <body>
-    <div th:replace="~{componentes/navbar}"></div>
+<div th:replace="~{componentes/navbar}"></div>
 
-    <div class="main-content">
-        <div class="container my-5">
-            <div class="row">
-                <!-- Conteúdo Principal -->
-                <div class="col-md-8">
-                    <h1 class="news-title" th:text="${postagem.titulo}"></h1>
-                    <p class="text-muted" th:text="'Publicado em ' + ${postagem.dataPublicacaoFormatada} + ' por ' + ${postagem.autor}"></p>
+<div class="main-content">
+    <div class="container my-5">
+        <div class="row">
+            <!-- Conteúdo Principal -->
+            <div class="col-md-8">
+                <h1 class="news-title" th:text="${postagem.titulo}"></h1>
+                <p class="text-muted"
+                   th:text="'Publicado em ' + ${postagem.dataPublicacaoFormatada} + ' por ' + ${postagem.autor}"></p>
 
-                    <!-- Carousel de Imagens -->
-                    <div id="carouselNewsImages" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div th:each="imagem, iterStat : ${postagem.imagens}"
-                                 class="carousel-item"
-                                 th:classappend="${iterStat.index == 0} ? 'active'">
-                                <img th:src="@{${imagem}}" class="d-block w-100" alt="Imagem da Notícia">
-                            </div>
+                <!-- Carousel de Imagens -->
+                <div id="carouselNewsImages" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div th:each="imagem, iterStat : ${postagem.imagens}"
+                             class="carousel-item"
+                             th:classappend="${iterStat.index == 0} ? 'active'">
+                            <img th:src="@{${imagem}}" class="d-block w-100" alt="Imagem da Notícia">
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewsImages" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Anterior</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselNewsImages" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Próximo</span>
-                        </button>
                     </div>
-                    <div class="news-content">
-                        <p th:text="${postagem.texto}"></p>
-                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselNewsImages"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselNewsImages"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Próximo</span>
+                    </button>
                 </div>
+                <div class="news-content">
+                    <p th:text="${postagem.texto}"></p>
+                </div>
+            </div>
 
-                <div class="col-md-4">
-                    <div class="sidebar">
-                        <h4 class="sidebar-title">Últimas Postagens</h4>
-                        <div class="post-list">
-                            <div th:each="postagem : ${ultimasPostagens}" class="post-item">
-                                <a th:href="@{/postagem/{id}(id=${postagem.id})}"
-                                   th:text="${postagem.titulo}"
-                                   class="post-link"></a>
-                            </div>
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <h4 class="sidebar-title">Últimas Postagens</h4>
+                    <div class="post-list">
+                        <div th:each="postagem : ${ultimasPostagens}" class="post-item">
+                            <a th:href="@{/postagem/{id}(id=${postagem.id})}"
+                               th:text="${postagem.titulo}"
+                               class="post-link"></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div th:replace="~{componentes/footer}"></div>
+</div>
+<div th:replace="~{componentes/footer}"></div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

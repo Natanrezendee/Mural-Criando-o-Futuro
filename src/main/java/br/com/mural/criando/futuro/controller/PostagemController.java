@@ -41,7 +41,7 @@ public class PostagemController {
 
     @GetMapping("/excluir-postagens")
     public String excluirPostagem(Model model) {
-        model.addAttribute("postagens",postagemService.getAllPostagensAbreviadas());
+        model.addAttribute("postagens", postagemService.getAllPostagensAbreviadas());
         return "postagens/excluirPostagens";
     }
 
