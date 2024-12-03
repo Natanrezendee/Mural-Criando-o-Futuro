@@ -24,6 +24,8 @@ public class ImgurService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
+        headers.add("User-Agent", "curl/7.84.0");
+        headers.add("Accept", "*/*");
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("image", new ByteArrayResource(file.getBytes()) {
