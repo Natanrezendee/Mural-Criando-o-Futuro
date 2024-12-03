@@ -99,7 +99,7 @@ public class PostagemService {
 
     private String uploadImageSafely(MultipartFile imagem) {
         try {
-            return imgurService.uploadImage(imagem);
+            return imgurService.uploadImageWithRetry(imagem);
         } catch (Exception e) {
             logger.error("Erro ao fazer upload da imagem: {}", imagem.getOriginalFilename(), e);
             return null;
