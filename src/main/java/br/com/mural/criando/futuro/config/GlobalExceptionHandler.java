@@ -1,20 +1,29 @@
 package br.com.mural.criando.futuro.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
-import java.util.logging.Logger;
-
-@Controller
+@ControllerAdvice
 public class GlobalExceptionHandler implements ErrorController {
 
-    private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @RequestMapping("/error")
-    public String handleError(Exception e, Model model) {
-        logger.info(e.getMessage());
+    @ExceptionHandler(Exception.class)
+    public String handleAllExceptions(Exception e, Model model) {
+        logger.error("An error occurred: {}", e.getMessage(), e);
+        model.addAttribute("errorMessage", e.getMessage());
+        return "redirect:/";
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public String handle404(NoHandlerFoundException e, Model model) {
+        logger.warn("Page not found: {}", e.getMessage());
+        model.addAttribute("errorMessage", "Page not found");
         return "redirect:/";
     }
 }

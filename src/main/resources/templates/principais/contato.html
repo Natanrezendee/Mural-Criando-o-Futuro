@@ -30,7 +30,7 @@
             <div class="form-floating" id="campo-telefone">
                 <input type="tel" class="form-control" id="telefone" placeholder="Telefone"
                        pattern="\(\d{2}\) \d{4,5}-\d{4}" aria-label="Telefone">
-                <label for="telefone">Telefone: (99) 99999-9999</label>
+                <label for="telefone">Telefone: (opcional)</label>
             </div>
             <div class="form-floating">
                 <input type="text" class="form-control" id="assunto" placeholder="Assunto" required
@@ -47,6 +47,9 @@
         <div id="mensagem-sucesso" class="alert alert-success mt-3" style="display: none;">
             Mensagem enviada com sucesso!
         </div>
+        <div id="mensagem-erro" class="alert alert-danger mt-3" style="display: none;">
+            Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.
+        </div>
     </div>
 </div>
 
@@ -57,30 +60,40 @@
     function enviarFormulario(event) {
         event.preventDefault();
 
-        const nome = document.getElementById('nome').value.trim();
-        const preferenciaContato = document.getElementById('preferencia-contato').value;
-        const email = document.getElementById('email').value.trim();
-        const telefone = document.getElementById('telefone').value.trim();
-        const assunto = document.getElementById('assunto').value.trim();
-        const mensagem = document.getElementById('mensagem').value.trim();
+        const form = document.getElementById('form-contato');
+        const formData = new FormData(form);
 
-        let contatoValido = false;
+        fetch('/api/contato', {
+            method: 'POST',
+            body: JSON.stringify(Object.fromEntries(formData.entries())),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => response.text())
+            .then(message => {
+                const mensagemSucesso = document.getElementById('mensagem-sucesso');
+                const mensagemErro = document.getElementById('mensagem-erro');
 
-        if (preferenciaContato === 'email' && email) {
-            contatoValido = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,63}$/.test(email);
-        } else if (preferenciaContato === 'telefone' && telefone) {
-            contatoValido = /\(\d{2}\) \d{4,5}-\d{4}/.test(telefone);
-        }
-
-        if (nome && contatoValido && assunto && mensagem) {
-            document.getElementById('mensagem-sucesso').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('mensagem-sucesso').style.display = 'none';
-            }, 3000);
-            document.getElementById('form-contato').reset();
-        } else {
-            alert('Por favor, preencha todos os campos corretamente.');
-        }
+                if (message.includes('sucesso')) {
+                    mensagemSucesso.style.display = 'block';
+                    mensagemErro.style.display = 'none';
+                    form.reset();
+                    setTimeout(() => {
+                        mensagemSucesso.style.display = 'none';
+                    }, 3000);
+                } else {
+                    mensagemErro.style.display = 'block';
+                    mensagemSucesso.style.display = 'none';
+                    mensagemErro.textContent = message;
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                const mensagemErro = document.getElementById('mensagem-erro');
+                mensagemErro.style.display = 'block';
+                mensagemErro.textContent = 'Erro ao enviar mensagem. Tente novamente mais tarde.';
+            });
     }
 </script>
 
