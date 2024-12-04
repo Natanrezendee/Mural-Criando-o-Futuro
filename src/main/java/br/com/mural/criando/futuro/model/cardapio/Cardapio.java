@@ -19,6 +19,7 @@ public class Cardapio {
     private TipoCardapio tipo;
 
     @OneToMany(mappedBy = "cardapio", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderColumn(name = "ordem")
     private List<Refeicao> refeicoes;
 }
 
