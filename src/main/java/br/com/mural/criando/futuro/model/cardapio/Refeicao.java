@@ -24,6 +24,8 @@ public class Refeicao {
     @JoinColumn(name = "cardapio_id")
     private Cardapio cardapio;
 
+    @Column(name = "ordem", columnDefinition = "SMALLINT")
+    private short ordem;
     public Refeicao(TipoRefeicao tipoRefeicao, String alimentos) {
         this.tipo = tipoRefeicao;
         this.alimentos = alimentos;

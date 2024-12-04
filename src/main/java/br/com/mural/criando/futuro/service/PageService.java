@@ -1,12 +1,10 @@
 package br.com.mural.criando.futuro.service;
 
-import br.com.mural.criando.futuro.model.cardapio.Semana;
 import br.com.mural.criando.futuro.model.postagem.Postagem;
 import br.com.mural.criando.futuro.model.postagem.PostagemAbreviada;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 
@@ -14,12 +12,12 @@ import java.util.Optional;
 public class PageService {
 
     private final PostagemService postagemService;
-    private final CardapioService cardapioService;
+    private final SemanaService semanaService;
 
 
-    public PageService(PostagemService postagemService, CardapioService cardapioService) {
+    public PageService(PostagemService postagemService, SemanaService semanaService) {
         this.postagemService = postagemService;
-        this.cardapioService = cardapioService;
+        this.semanaService = semanaService;
     }
 
     public String carregarDadosIndex(int pagina, int tamanho, Model model) {
@@ -39,7 +37,7 @@ public class PageService {
     }
 
     public String carregarDadosCardapio(Model model) {
-        model.addAttribute("semanaAtual", cardapioService.getSemanaAtual());
+        model.addAttribute("semanaAtual", semanaService.getSemanaAtual());
         return "principais/cardapio";
     }
 }
