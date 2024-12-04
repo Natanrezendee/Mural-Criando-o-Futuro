@@ -30,7 +30,7 @@
             </div>
             <div class="col-md-8">
                 <h3 class="mt-2" th:text="${postagem.titulo}"></h3>
-                <p th:text="${postagem.textoAbreviado}"></p>
+                <p th:utext="${postagem.textoAbreviadoComoHtml}"></p>
                 <a th:href="@{/postagem/{id}(id=${postagem.id})}" class="news-button">Continue lendo</a>
             </div>
         </div>

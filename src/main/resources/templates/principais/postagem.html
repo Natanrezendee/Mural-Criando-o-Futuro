@@ -44,7 +44,7 @@
                     </button>
                 </div>
                 <div class="news-content">
-                    <p th:text="${postagem.texto}"></p>
+                    <div th:utext="${postagem.textoComoHtml}"></div>
                 </div>
             </div>
 

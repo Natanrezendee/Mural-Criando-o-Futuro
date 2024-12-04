@@ -90,6 +90,8 @@ public class PostagemService {
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
 
+            logger.info("URLs das imagens carregadas: {}", urlsImagens);
+
             postagem.setImagens(urlsImagens);
         }
 
