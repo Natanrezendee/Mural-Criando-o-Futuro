@@ -24,8 +24,8 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         // Criando um usuário em memória com credenciais simples
-        var user = User.withUsername("teste")
-                .password(passwordEncoder().encode("teste"))
+        var user = User.withUsername("diretoria")
+                .password(passwordEncoder().encode("senhaGrande123"))
                 .roles("USER")
                 .build();
 
@@ -41,6 +41,7 @@ public class SecurityConfig {
                         .requestMatchers("/excluir-postagens").authenticated()
                         .requestMatchers(HttpMethod.POST, "/postar-postagem").authenticated()
                         .requestMatchers(HttpMethod.POST, "/excluir-postagem").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/contato").permitAll()
                         .anyRequest().permitAll()
                 )
                 .formLogin(formLogin ->

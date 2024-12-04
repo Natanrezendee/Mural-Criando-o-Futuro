@@ -24,8 +24,6 @@ public class ImgurService {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Authorization", "Client-ID " + IMGUR_CLIENT_ID);
-        headers.add("User-Agent", "curl/7.84.0");
-        headers.add("Accept", "*/*");
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("image", new ByteArrayResource(file.getBytes()) {
@@ -61,7 +59,7 @@ public class ImgurService {
                 if (e.getStatusCode() == HttpStatus.TOO_MANY_REQUESTS) {
                     logger.warn("Tentativa {} falhou. Retentando...", i + 1);
                     try {
-                        Thread.sleep((long) Math.pow(2, i) * 1000); // Backoff exponencial
+                        Thread.sleep((long) Math.pow(2, i) * 1000);
                     } catch (InterruptedException ex) {
                         Thread.currentThread().interrupt();
                     }
