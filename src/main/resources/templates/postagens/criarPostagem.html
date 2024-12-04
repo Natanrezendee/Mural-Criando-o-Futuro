@@ -54,7 +54,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-        document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
         var easyMDE = new EasyMDE({
             element: document.getElementById("postagem"),
             spellChecker: false,
@@ -73,52 +73,42 @@
 
     // Função para mostrar as imagens selecionadas
     function showPreview(files) {
-        // Itera sobre os arquivos selecionados
         Array.from(files).forEach(file => {
             const reader = new FileReader();
             reader.onload = function (e) {
-                // Cria o contêiner da imagem
                 const imageContainer = document.createElement('div');
                 imageContainer.classList.add('image-container');
 
-                // Cria a imagem
                 const img = document.createElement('img');
                 img.src = e.target.result;
                 img.classList.add('preview-image');
 
-                // Cria o botão de remoção (X)
                 const removeButton = document.createElement('button');
                 removeButton.classList.add('remove-btn');
                 removeButton.textContent = '×';
 
-                // Adiciona o evento de remoção
                 removeButton.addEventListener('click', function () {
                     previewContainer.removeChild(imageContainer);
                 });
 
-                // Adiciona a imagem e o botão ao contêiner da imagem
                 imageContainer.appendChild(img);
                 imageContainer.appendChild(removeButton);
 
-                // Adiciona o contêiner da imagem à área de pré-visualização
                 previewContainer.appendChild(imageContainer);
             };
             reader.readAsDataURL(file);
         });
     }
 
-    // Evento para alterar a área de arraste quando o arquivo é arrastado sobre a área
     dragDropArea.addEventListener('dragover', function (e) {
         e.preventDefault();
-        dragDropArea.classList.add('drag-over'); // Adiciona efeito visual de hover
+        dragDropArea.classList.add('drag-over');
     });
 
-    // Evento para quando o arquivo é soltado
     dragDropArea.addEventListener('dragleave', function () {
-        dragDropArea.classList.remove('drag-over'); // Remove o efeito de hover
+        dragDropArea.classList.remove('drag-over');
     });
 
-    // Evento de soltura do arquivo
     dragDropArea.addEventListener('drop', function (e) {
         e.preventDefault();
         dragDropArea.classList.remove('drag-over');
@@ -128,16 +118,13 @@
         }
     });
 
-    // Evento para abrir o seletor de arquivos quando a área de arraste for clicada
     dragDropArea.addEventListener('click', function () {
-        fileInput.click(); // Aciona o seletor de arquivos
+        fileInput.click();
     });
 
-    // Quando os arquivos são selecionados diretamente
     fileInput.addEventListener('change', function () {
-        showPreview(fileInput.files); // Exibe as imagens selecionadas
+        showPreview(fileInput.files);
     });
-
 </script>
 
 </body>
