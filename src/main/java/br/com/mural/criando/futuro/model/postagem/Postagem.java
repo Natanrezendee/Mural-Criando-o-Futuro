@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -38,6 +40,15 @@ public class Postagem {
         this.titulo = titulo;
         this.texto = texto;
         this.autor = autor;
+    }
+
+    public String getTextoComoHtml() {
+        if (this.texto != null && !this.texto.isEmpty()) {
+            Parser parser = Parser.builder().build();
+            HtmlRenderer renderer = HtmlRenderer.builder().build();
+            return renderer.render(parser.parse(this.texto));
+        }
+        return "";
     }
 
     public String getDataPublicacaoFormatada() {
