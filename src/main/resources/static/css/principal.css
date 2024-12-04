@@ -80,6 +80,9 @@ html, body {
 
 /* Estilo Mobile */
 @media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
     .navbar {
         position: fixed;
         top: 0;
