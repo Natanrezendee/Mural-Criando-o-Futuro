@@ -16,7 +16,10 @@ public class PostagemController {
     }
 
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(@RequestParam(value = "error", required = false) String error, Model model) {
+        if (error != null) {
+            model.addAttribute("loginError", "Usuário ou senha incorretos. Tente novamente.");
+        }
         return "login";
     }
 
