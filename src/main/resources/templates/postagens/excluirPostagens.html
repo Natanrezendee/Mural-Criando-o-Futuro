@@ -23,7 +23,7 @@
                 <img th:src="@{${postagem.imagem}}" alt="Imagem da postagem" class="post-image">
                 <div class="post-content">
                     <h2 class="post-title" th:text="${postagem.titulo}"></h2>
-                    <p class="post-text" th:text="${postagem.textoAbreviado}"></p>
+                    <p class="post-text" th:utext="${postagem.textoAbreviadoComoHtml}"></p>
                     <form th:action="@{/excluir-postagem/{id}(id=${postagem.id})}" method="POST">
                         <button type="submit" class="delete-btn">Excluir</button>
                     </form>
