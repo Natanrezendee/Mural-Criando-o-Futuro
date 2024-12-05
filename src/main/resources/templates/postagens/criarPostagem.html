@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="postagem">Conteúdo da Notícia:</label>
-            <textarea id="postagem" name="postagem" placeholder="Escreva sua notícia..." required></textarea>
+            <textarea id="postagem" name="postagem" placeholder="Escreva sua notícia..."></textarea>
         </div>
 
         <div class="form-group drag-drop">
@@ -55,7 +55,7 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        var easyMDE = new EasyMDE({
+        const easyMDE = new EasyMDE({
             element: document.getElementById("postagem"),
             spellChecker: false,
             placeholder: "Escreva sua notícia em Markdown...",
@@ -64,6 +64,14 @@
                 codeSyntaxHighlighting: true,
             },
         });
+    });
+
+    document.querySelector('form').addEventListener('submit', function (event) {
+        const easyMDEContent = easyMDE.value().trim();
+        if (!easyMDEContent) {
+            alert("O conteúdo da notícia não pode estar vazio.");
+            event.preventDefault();
+        }
     });
 
     // Seleciona a área de drag-drop e o input de arquivo

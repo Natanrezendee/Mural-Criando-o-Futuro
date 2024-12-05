@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       lang="pt-BR">
@@ -18,15 +19,18 @@
 <div th:replace="~{componentes/navbar}"></div>
 <div class="main-content">
     <div class="contact-form">
+        <div th:if="${loginError}" class="alert alert-danger" role="alert">
+            <p th:text="${loginError}"></p>
+        </div>
         <form id="form-contato" class="form-signin" method="POST" th:action="@{/login}">
             <fieldset>
                 <h1 class="h3 mb-3 font-weight-normal">Entrar</h1>
-                <label id="username" for="username" class="sr-only">E-mail</label>
-                <label for="username "></label><input type="text" id="username " class="form-control"
-                                                      placeholder="Usuario" required autofocus name="username"/>
+                <label for="username" class="sr-only">Nome</label>
+                <input type="text" id="username"  name="username" class="form-control"
+                       placeholder="Usuario" required autofocus autocomplete="username"/>
                 <label for="password" class="sr-only">Senha</label>
-                <label for="password"></label><input type="password" id="password" class="form-control"
-                                                     placeholder="Senha" required name="password"/>
+                <input type="password" id="password" name="password" class="form-control"
+                       placeholder="Senha" required autocomplete="current-password">
 
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
                 <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
