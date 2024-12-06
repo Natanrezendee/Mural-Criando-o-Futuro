@@ -5,6 +5,19 @@ Desenvolvido por **Natan Rezende**, **Alana Peres**, **Marcos Paulo Simões** e 
 ### 🌐 Acesse Agora  
 [**Clique aqui para acessar o Mural Criando o Futuro**](https://muralcriandofuturo1-s4pdwtkz.b4a.run/) 
 
+### 🎥 **Apresentação do Mural Criando o Futuro**  
+Quer saber mais sobre como o **Mural Criando o Futuro** funciona e como ele transforma a comunicação nas escolas?  
+
+Assista à nossa apresentação no YouTube, onde explicamos:
+- Os objetivos do projeto e seus benefícios para a comunidade escolar.  
+- As principais funcionalidades da plataforma.  
+- Um tour interativo pelo sistema, mostrando como ele é fácil de usar e eficiente.  
+
+👉 [**Clique aqui para assistir no YouTube**](https://www.youtube.com/watch?v=0Bo-PrUSYiY)  
+
+Dê o play e descubra por que o **Mural Criando o Futuro** é a escolha ideal para melhorar a comunicação e organização em escolas e creches!
+
+
 ## 🛠️ Tecnologias Utilizadas  
 
 O sistema foi desenvolvido utilizando uma combinação moderna de ferramentas e tecnologias, incluindo:  
@@ -96,6 +109,22 @@ Para acessar o sistema e explorar todas as funcionalidades, utilize as seguintes
 
 - **Usuário:** `diretoria`  
 - **Senha:** `senhaGrande123`  
+
+### 👥 **Participantes do Projeto**  
+
+Conheça a equipe por trás do **Mural Criando o Futuro**, formada por desenvolvedores dedicados e apaixonados pela inovação!  
+
+#### **Alana Nascimento**  
+<img src="https://github.com/user-attachments/assets/f3f70b15-7eb1-4235-a4bb-dd3f32e77a56" alt="Alana Nascimento" width="150" height="150" style="border-radius: 8px;">  
+
+#### **Thiago Lourenço**  
+<img src="https://github.com/user-attachments/assets/61870712-39ab-43fd-82bf-460879043d47" alt="Thiago Lourenço" width="150" height="150" style="border-radius: 8px;">  
+
+#### **Natan Rezende**  
+<img src="https://github.com/user-attachments/assets/db82c4d4-56b5-4167-8213-a5221f775086" alt="Natan Rezende" width="150" height="150" style="border-radius: 8px;">  
+
+#### **Marcos Paulo**  
+<img src="https://github.com/user-attachments/assets/ed7a507c-63bd-4b3b-91e6-78947a87357f" alt="Marcos Paulo" width="150" height="150" style="border-radius: 8px;">  
 
 
 ## 🏗️ Contribuindo  
