@@ -39,6 +39,7 @@ public class SecurityConfig {
                         .requestMatchers("/criar-postagem").authenticated()
                         .requestMatchers("/gerenciar-postagens").authenticated()
                         .requestMatchers("/excluir-postagens").authenticated()
+                        .requestMatchers("/editar-postagens").authenticated()
                         .requestMatchers(HttpMethod.POST, "/postar-postagem").authenticated()
                         .requestMatchers(HttpMethod.POST, "/excluir-postagem").authenticated()
                         .requestMatchers(HttpMethod.POST, "/api/contato").permitAll()

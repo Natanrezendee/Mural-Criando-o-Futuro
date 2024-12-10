@@ -62,3 +62,11 @@
     font-weight: 500;
     color: #333;
 }
+
+.yellow-icon {
+    color: #f4a236;
+}
+
+.yellow-icon:hover {
+    color: #d17b0c;
+}

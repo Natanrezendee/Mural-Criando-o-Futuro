@@ -1,10 +1,13 @@
 package br.com.mural.criando.futuro.controller;
 
+import br.com.mural.criando.futuro.model.postagem.Postagem;
 import br.com.mural.criando.futuro.service.PostagemService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Optional;
 
 @Controller
 public class PostagemController {
@@ -42,8 +45,21 @@ public class PostagemController {
         return "redirect:/";
     }
 
+    @GetMapping("/editar-postagens")
+    public String editarPostagens(Model model) {
+        model.addAttribute("postagens", postagemService.getAllPostagensAbreviadas());
+        return "postagens/editarPostagens";
+    }
+
+    @GetMapping("/editar-postagem/{id}")
+    public String getPostagem(@PathVariable(value = "id") Long id,Model model) {
+        Optional<Postagem> postagemOpt = postagemService.getPostagemById(id);
+        postagemOpt.ifPresent(postagem -> model.addAttribute("postagem", postagem));
+        return "postagens/editarPostagens";
+    }
+
     @GetMapping("/excluir-postagens")
-    public String excluirPostagem(Model model) {
+    public String excluirPostagens(Model model) {
         model.addAttribute("postagens", postagemService.getAllPostagensAbreviadas());
         return "postagens/excluirPostagens";
     }
