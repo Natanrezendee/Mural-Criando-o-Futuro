@@ -67,9 +67,7 @@
     margin-bottom: 1rem;
 }
 
-/* Botão de Exclusão */
-.main-content .delete-btn {
-    background-color: #f44336;
+.main-content .btn {
     color: white;
     border: none;
     padding: 0.6rem 1rem;
@@ -82,7 +80,22 @@
     transition: background-color 0.3s;
 }
 
+/* Botão de Exclusão */
+.main-content .delete-btn {
+    background-color: #f44336;
+}
+
 /* Efeito de hover no botão de exclusão */
 .main-content .delete-btn:hover {
     background-color: #d32f2f;
+}
+
+/* Botão de Exclusão */
+.main-content .edit-btn {
+    background-color: #f4a236;
+}
+
+/* Efeito de hover no botão de exclusão */
+.main-content .edit-btn:hover {
+    background-color: #d17b0c;
 }
